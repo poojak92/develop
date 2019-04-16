@@ -1,0 +1,22 @@
+<resources>
+    <dimen name="top_spalsh_icon">60dp</dimen>
+    <dimen name="text_splash">24dp</dimen>
+
+    // Toolbar
+    <dimen name="toolbar_drawable_padding">10dp</dimen>
+    <dimen name="toolbar_title_margin">14dp</dimen>
+    <dimen name="toolbar_title_text_size">18sp</dimen>
+    <dimen name="toolbar_title_white_text_size">20dp</dimen>
+    <dimen name="toolbar_left">25dp</dimen>
+    <dimen name="layout_left">16dp</dimen>
+    <dimen name="layout_right">16dp</dimen>
+    <dimen name="layout_bottom">16dp</dimen>
+    <dimen name="forgot_text">14dp</dimen>
+    <dimen name="email_address">16dp</dimen>
+    <dimen name="text_top">12dp</dimen>
+    <dimen name="button_text_size">20dp</dimen>
+    <dimen name="login_sign_up">15sp</dimen>
+    <dimen name="textinput_hint_size">14dp</dimen>
+    <dimen name="msg_error">13sp</dimen>
+    <dimen name="btn_register_top">30dp</dimen>
+</resources>

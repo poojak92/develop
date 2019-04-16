@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/cl_toolbar_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:background="@android:color/transparent"
+        android:layout_height="?android:attr/actionBarSize">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_generic_toolbar"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize"
+            android:background="@android:color/transparent">
+
+            <ImageButton
+                android:id="@+id/ib_toolbar_left"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/toolbar_drawable_padding"
+                android:paddingTop="@dimen/toolbar_drawable_padding"
+                android:paddingBottom="@dimen/toolbar_drawable_padding"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_toolbar_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.scarlett.Ui.CustomeView.CustomTextView
+                android:id="@+id/tv_toolbar_title"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/toolbar_title_text_size"
+                android:focusable="true"
+                android:clickable="true"
+                app:fontType="gotham_medium"
+                android:text="slkldldd"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@+id/ib_toolbar_left"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="@dimen/toolbar_left"/>
+
+
+            <ImageButton
+                android:id="@+id/ib_toolbar_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/toolbar_drawable_padding"
+                android:paddingTop="@dimen/toolbar_drawable_padding"
+                android:paddingBottom="@dimen/toolbar_drawable_padding"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+           <android.support.constraint.ConstraintLayout
+               android:id="@+id/cl_white_title_layout"
+               android:visibility="visible"
+               app:layout_constraintBottom_toBottomOf="parent"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintLeft_toRightOf="@+id/ib_toolbar_left"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+
+               <com.scarlett.Ui.CustomeView.CustomTextView
+                   android:id="@+id/tv_toolbar_white_title"
+                   android:visibility="visible"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@android:color/white"
+                   android:textSize="@dimen/toolbar_title_white_text_size"
+                   android:focusable="true"
+                   android:clickable="true"
+                   app:fontType="gotham_medium"
+                   android:text="Title"
+                   app:layout_constraintLeft_toLeftOf="parent"
+                   app:layout_constraintTop_toTopOf="parent"
+                   android:layout_marginLeft="@dimen/toolbar_left"/>
+
+               <com.scarlett.Ui.CustomeView.CustomTextView
+                   android:id="@+id/tv_toolbar_subtitle"
+                   android:text="Subtitle"
+                   android:textColor="@android:color/white"
+                   android:textSize="@dimen/toolbar_title_text_size"
+                   app:layout_constraintTop_toBottomOf="@+id/tv_toolbar_white_title"
+                   app:layout_constraintLeft_toLeftOf="parent"
+                   android:layout_marginLeft="@dimen/toolbar_left"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" />
+
+           </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:id="@+id/view_toolbar_shadow"
+        android:background="@drawable/toolbar_shadow_background"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="3px"/>
+
+</android.support.constraint.ConstraintLayout>

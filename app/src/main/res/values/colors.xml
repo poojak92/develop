@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ed5c48</color>
+    <color name="colorPrimaryDark">#1a1818</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorMenu">#dadada</color>
+    <color name="colorBackground">#f1f1f1</color>
+
+    <color name="devider_view_color">#A5B0B6</color>
+    <color name="hint_color">#A5B0B6</color>
+
+    <color name="fb">#3f51b5</color>
+    <color name="google">#ff3d00</color>
+
+    <color name="til_control_normal">#f28576</color>
+    <color name="red">#FF0000</color>
+
+
+</resources>

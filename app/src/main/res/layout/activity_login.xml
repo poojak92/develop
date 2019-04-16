@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    tools:context=".activity.LoginActivity">
+
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_view_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <include
+                layout="@layout/layout_generic_toolbar"
+                android:visibility="gone" />
+
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_login_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/layout_top"
+                android:paddingLeft="@dimen/layout_left"
+                android:paddingRight="@dimen/layout_right"
+                android:paddingBottom="@dimen/layout_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cv_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:cardCornerRadius="@dimen/card_view_corner_radius"
+                    tools:elevation="@dimen/card_view_elevation">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbars="none"
+                        android:overScrollMode="never"
+                        android:fillViewport="true"
+                        android:fitsSystemWindows="true">
+
+
+                        <android.support.constraint.ConstraintLayout
+                            android:id="@+id/cl_card_child"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingTop="@dimen/layout_top"
+                            android:paddingLeft="@dimen/layout_left"
+                            android:paddingRight="@dimen/layout_right"
+                            android:paddingBottom="@dimen/layout_bottom">
+
+                            <ImageView
+                                android:id="@+id/iv_logo"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ic_splash"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/til_email"
+
+                                />
+
+                            <com.scarlett.Ui.CustomeView.CustomTextInputLayout
+                                android:id="@+id/til_email"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/enter_emailaddress"
+                                android:theme="@style/TextInputLayoutHintStyle"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/iv_logo"
+                               >
+
+                                <com.scarlett.Ui.CustomeView.CustomEditText
+                                    android:id="@+id/et_email_address"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLength="50"
+                                    android:textSize="@dimen/email_address"
+                                    app:fontType="gotham_book" />
+
+                            </com.scarlett.Ui.CustomeView.CustomTextInputLayout>
+
+
+                           <com.scarlett.Ui.CustomeView.CustomTextInputLayout
+                                android:id="@+id/til_password"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/text_top"
+                                android:layout_marginBottom="@dimen/text_top"
+                                android:hint="@string/hint_password"
+                                android:theme="@style/TextInputLayoutHintStyle"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_forgot_password"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/til_email">
+
+                                <com.scarlett.Ui.CustomeView.CustomEditText
+                                    android:id="@+id/et_password"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:inputType="textPassword"
+                                    android:maxLength="50"
+                                    android:textSize="@dimen/email_address"
+                                    app:fontType="gotham_book" />
+
+                            </com.scarlett.Ui.CustomeView.CustomTextInputLayout>
+
+
+                            <com.scarlett.Ui.CustomeView.CustomTextView
+                                android:id="@+id/tv_forgot_password"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/text_forgot_password"
+                                android:textColor="@color/hint_color"
+                                android:textSize="@dimen/forgot_text"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                            <com.scarlett.Ui.CustomeView.CustomButton
+                                android:id="@+id/btn_login"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/text_top"
+                                android:background="@drawable/btn_login"
+                                android:enabled="true"
+                                android:text="@string/button_login"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/button_text_size"
+                                android:visibility="visible"
+                                app:fontType="gotham_medium"
+                                android:onClick="startActivity"
+                                style="?android:attr/borderlessButtonStyle"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
+
+
+                            <RelativeLayout
+                                android:id="@+id/rl_fb"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/btn_login"
+                                android:background="@android:color/white"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginTop="@dimen/layout_top">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="2"
+                                android:gravity="center"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true">
+                                <FrameLayout
+                                    android:id="@+id/FrameLayout1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    >
+
+                                  <!--  <com.facebook.login.widget.LoginButton
+                                        android:id="@+id/login_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:visibility="gone" />
+
+                                                                                android:drawableLeft="@drawable/ic_fb"
+
+-->
+                                    <com.scarlett.Ui.CustomeView.CustomButton
+                                        android:id="@+id/fb"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="#416BC1"
+                                        android:text="Facebook"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="16dp"
+                                        android:textAllCaps="false"
+                                        android:gravity="center"
+                                        style="?android:attr/borderlessButtonStyle"
+
+                                        />
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:id="@+id/FrameLayoutGoogle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginLeft="4dp"
+
+                                    >
+
+                                  <!--  <com.google.android.gms.common.SignInButton
+                                        android:id="@+id/sign_in_button"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="50dp"
+                                                                                android:drawableLeft="@drawable/ic_google"
+
+                                        android:layout_gravity="center_horizontal" />-->
+
+                                    <com.scarlett.Ui.CustomeView.CustomButton
+                                        android:id="@+id/btn_google"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@color/google"
+                                        android:text="Google"
+                                        android:textSize="16dp"
+                                        android:textColor="@android:color/white"
+                                        android:textAllCaps="false"
+                                        android:gravity="center"
+                                        style="?android:attr/borderlessButtonStyle"
+
+                                        />
+                                </FrameLayout>
+                            </LinearLayout>
+
+                            </RelativeLayout>
+
+
+                            <android.support.constraint.ConstraintLayout
+                                android:id="@+id/cl_bottom_view"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/rl_fb">
+
+                                <com.scarlett.Ui.CustomeView.CustomTextView
+                                    android:id="@+id/tv_sign_up"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:contextClickable="true"
+                                    android:text="@string/login_sign_up"
+                                    android:textSize="@dimen/login_sign_up"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                   />
+
+
+
+                            </android.support.constraint.ConstraintLayout>
+                        </android.support.constraint.ConstraintLayout>
+
+
+                    </ScrollView>
+
+                </android.support.v7.widget.CardView>
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
