@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.DashBoardActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.LightStatusBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
@@ -22,11 +22,11 @@
             </intent-filter>
         </activity>
 
-        <activity
+       <!-- <activity
             android:name=".activity.DashBoardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar.LightStatusBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar.LightStatusBar"></activity>-->
 
         <activity
             android:name=".activity.LoginActivity"

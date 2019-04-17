@@ -54,4 +54,9 @@
         <item name="android:textColor">@color/red</item>
         <item name="android:textSize">@dimen/msg_error</item>
     </style>
+
+    <style name="image_attribute">
+        <item name="android:layout_width">@dimen/img_width</item>
+        <item name="android:layout_height">@dimen/img_height</item>
+    </style>
 </resources>
