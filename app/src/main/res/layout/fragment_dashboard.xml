@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.DashBoardActivity"
-    tools:showIn="@layout/app_bar_main"
     android:background="@color/colorBackground"
     android:layout_marginTop="60dp"
     >
@@ -316,6 +316,126 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/clProfile1"
                 android:layout_marginTop="4dp" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/clUserInfo1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintDimensionRatio="h,2:0.5"
+                android:layout_marginRight="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_lock">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cllike1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/clcomment"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgLike1"
+                        style="@style/image_attribute"
+                        android:src="@drawable/ic_like"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.scarlett.Ui.CustomeView.CustomTextView
+                        android:id="@+id/tv_like1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_left"
+                        android:text="100 Like"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size_14_sp"
+                        app:fontType="gotham_book"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgLike1"
+                        app:layout_constraintLeft_toRightOf="@+id/imgLike1"
+                        app:layout_constraintTop_toTopOf="@+id/imgLike1" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clcomment1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/clshare1"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cllike1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgComment1"
+                        style="@style/image_attribute"
+                        android:src="@drawable/ic_comment"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.scarlett.Ui.CustomeView.CustomTextView
+                        android:id="@+id/tv_comment1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_left"
+                        android:text="50 Comment"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size_14_sp"
+                        app:fontType="gotham_book"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgComment1"
+                        app:layout_constraintLeft_toRightOf="@+id/imgComment1"
+                        app:layout_constraintTop_toTopOf="@+id/imgComment1" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/clshare1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/clcomment1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imgshare1"
+                        style="@style/image_attribute"
+                        android:src="@drawable/ic_share"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.scarlett.Ui.CustomeView.CustomTextView
+                        android:id="@+id/tv_share1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_left"
+                        android:text="3 Share"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size_14_sp"
+                        app:fontType="gotham_book"
+                        app:layout_constraintBottom_toBottomOf="@+id/imgshare1"
+                        app:layout_constraintLeft_toRightOf="@+id/imgshare1"
+                        app:layout_constraintTop_toTopOf="@+id/imgshare1" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.constraint.ConstraintLayout>
+
         </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
