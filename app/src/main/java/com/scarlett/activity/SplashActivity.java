@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.scarlett.Utils.BottomBarSingleton;
 import com.scarlett.activity.base.BaseAcitivity;
 import com.scarlett.R;
 
@@ -23,6 +24,8 @@ public class SplashActivity extends BaseAcitivity {
     {
         setContentView(R.layout.activity_splash);
         setTimer();
+        BottomBarSingleton.getInstance(SplashActivity.this).setBottomData();
+
     }
 
     public void setTimer() {
@@ -34,9 +37,9 @@ public class SplashActivity extends BaseAcitivity {
     public Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
 
             }
 

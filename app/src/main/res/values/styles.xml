@@ -6,11 +6,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
 
@@ -25,6 +27,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
@@ -58,5 +62,10 @@
     <style name="image_attribute">
         <item name="android:layout_width">@dimen/img_width</item>
         <item name="android:layout_height">@dimen/img_height</item>
+    </style>
+
+    <style name="image_attribute_home">
+        <item name="android:layout_width">@dimen/img_width_home</item>
+        <item name="android:layout_height">@dimen/img_height_home</item>
     </style>
 </resources>

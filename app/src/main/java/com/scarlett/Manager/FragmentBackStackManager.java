@@ -1,4 +1,4 @@
-package com.devere.lumina.manager;
+package com.scarlett.Manager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

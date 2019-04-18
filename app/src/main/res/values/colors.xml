@@ -14,6 +14,8 @@
 
     <color name="til_control_normal">#f28576</color>
     <color name="red">#FF0000</color>
+    <color name="white">#fff</color>
+    <color name="colorblack">#000</color>
 
 
 </resources>

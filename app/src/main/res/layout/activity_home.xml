@@ -23,14 +23,15 @@
             <FrameLayout
                 android:id="@+id/fragment_holder"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_bar"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"></FrameLayout>
 
-            <com.devere.lumina.ui.customviews.CustomBottomNavBar
+            <include
                 android:id="@+id/bottom_bar"
+                layout="@layout/layout_bottom_bar"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,6 +53,8 @@
             <include
                 layout="@layout/layout_generic_toolbar"
                 android:visibility="visible" />
+
         </android.support.constraint.ConstraintLayout>
+
     </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>

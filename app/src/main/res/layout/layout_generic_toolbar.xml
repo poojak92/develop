@@ -16,7 +16,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:background="@android:color/transparent"
+        android:background="@color/colorPrimary"
         android:layout_height="?android:attr/actionBarSize">
 
 
@@ -30,14 +30,16 @@
 
             <ImageButton
                 android:id="@+id/ib_toolbar_left"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:paddingRight="@dimen/toolbar_drawable_padding"
+                android:paddingLeft="@dimen/toolbar_drawable_padding"
                 android:paddingTop="@dimen/toolbar_drawable_padding"
                 android:paddingBottom="@dimen/toolbar_drawable_padding"
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
+                android:visibility="gone"
                 android:src="@drawable/ic_toolbar_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -58,13 +60,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="@+id/ib_toolbar_left"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="@dimen/toolbar_left"/>
+                android:layout_marginLeft="10dp"/>
 
 
             <ImageButton
                 android:id="@+id/ib_toolbar_right"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:paddingRight="@dimen/toolbar_drawable_padding"
                 android:paddingTop="@dimen/toolbar_drawable_padding"
                 android:paddingBottom="@dimen/toolbar_drawable_padding"
@@ -99,7 +101,7 @@
                    android:text="Title"
                    app:layout_constraintLeft_toLeftOf="parent"
                    app:layout_constraintTop_toTopOf="parent"
-                   android:layout_marginLeft="@dimen/toolbar_left"/>
+                   android:layout_marginLeft="10dp"/>
 
                <com.scarlett.Ui.CustomeView.CustomTextView
                    android:id="@+id/tv_toolbar_subtitle"
@@ -110,6 +112,7 @@
                    app:layout_constraintLeft_toLeftOf="parent"
                    android:layout_marginLeft="@dimen/toolbar_left"
                    android:layout_width="wrap_content"
+                   android:visibility="gone"
                    android:layout_height="wrap_content" />
 
            </android.support.constraint.ConstraintLayout>

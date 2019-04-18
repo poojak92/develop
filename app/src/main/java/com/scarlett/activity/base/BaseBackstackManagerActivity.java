@@ -1,13 +1,14 @@
-package com.devere.lumina.activity.base;
+package com.scarlett.activity.base;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.devere.lumina.R;
-import com.devere.lumina.manager.FragmentBackStackManager;
+import com.scarlett.Manager.FragmentBackStackManager;
+import com.scarlett.R;
 
-public abstract class BaseBackstackManagerActivity extends BaseToolbarActivity {
+
+public abstract class BaseBackstackManagerActivity extends BaseAcitivity {
 
     protected FragmentBackStackManager mFragmentBackStackManager;
     protected FragmentManager mFragmentManager;

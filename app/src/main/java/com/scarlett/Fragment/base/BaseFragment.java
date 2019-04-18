@@ -1,4 +1,4 @@
-package com.devere.lumina.fragment.base;
+package com.scarlett.Fragment.base;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,10 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.devere.lumina.activity.base.BaseAcitivity;
-import com.devere.lumina.activity.base.BaseBackstackManagerActivity;
-import com.devere.lumina.utils.CommanUtils;
-import com.devere.lumina.utils.DatabaseUtils;
+
+
+import com.scarlett.activity.base.BaseBackstackManagerActivity;
 
 import butterknife.ButterKnife;
 
@@ -21,8 +20,8 @@ public abstract class BaseFragment extends Fragment {
 
     protected View mRootView;
     protected BaseBackstackManagerActivity mParentActivity;
-    protected DatabaseUtils mDatabaseUtils;
-    protected CommanUtils mCommanUtils;
+  //  protected DatabaseUtils mDatabaseUtils;
+  //  protected CommanUtils mCommanUtils;
 
     @Nullable
     @Override
@@ -42,8 +41,8 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mParentActivity = (BaseBackstackManagerActivity) context;
-        mDatabaseUtils = new DatabaseUtils(mParentActivity);
-        mCommanUtils = new CommanUtils(mParentActivity);
+      //  mDatabaseUtils = new DatabaseUtils(mParentActivity);
+     //   mCommanUtils = new CommanUtils(mParentActivity);
     }
 
 

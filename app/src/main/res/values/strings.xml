@@ -25,4 +25,12 @@
     <string name="terms"> Terms of Service</string>
     <string name="and">and</string>
 
+    <string name="bottom_bar_tag_home">VIEW_TAG_HOME</string>
+    <string name="bottom_bar_tag_gallery">VIEW_TAG_GALLERY</string>
+    <string name="bottom_bar_tag_create">VIEW_TAG_CREATE</string>
+    <string name="bottom_bar_tag_video">VIEW_TAG_VIDEO</string>
+    <string name="bottom_bar_tag_profile">VIEW_TAG_PROFILE</string>
+    <string name="bootom_bar_create">Create</string>
+    <string name="text_loginwith">Sign in via Facebook or Google</string>
+
 </resources>

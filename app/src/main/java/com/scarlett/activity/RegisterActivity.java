@@ -60,6 +60,6 @@ public class RegisterActivity extends BaseAcitivity {
     }
 
     public void startActivity(View view) {
-        mRouter.startActivity(DashBoardActivity.class);
+        mRouter.startActivity(HomeActivity.class);
     }
 }

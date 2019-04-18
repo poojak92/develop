@@ -37,5 +37,9 @@
     <dimen name="text_left">8dp</dimen>
     <dimen name="img_width">26dp</dimen>
     <dimen name="img_height">26dp</dimen>
+    <dimen name="bottom_bar_margin">10dp</dimen>
+    <dimen name="img_width_home">30dp</dimen>
+    <dimen name="img_height_home">30dp</dimen>
+    <dimen name="text_size_bottom_bar">16sp</dimen>
 
 </resources>

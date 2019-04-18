@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/layoutBottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_parent1"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/iv_home"
+                style="@style/image_attribute_home"
+                android:src="@drawable/ic_home"
+                android:tag="@string/bottom_bar_tag_home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_gallery"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/iv_gallery"
+                style="@style/image_attribute_home"
+                android:src="@drawable/ic_gallery"
+                android:tag="@string/bottom_bar_tag_gallery"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_create1"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_home"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/iv_create1"
+                style="@style/image_attribute_home"
+                android:src="@drawable/ic_create"
+                android:tag="@string/bottom_bar_tag_create"
+                app:layout_constraintEnd_toStartOf="@+id/iv_video"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_gallery"
+                app:layout_constraintTop_toTopOf="@id/cl_parent1" />
+
+            <com.scarlett.Ui.CustomeView.CustomTextView
+                android:id="@+id/tv_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:tag="@string/bottom_bar_tag_create"
+                android:text="@string/bootom_bar_create"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_bottom_bar"
+                android:textStyle="bold"
+                app:fontType="gotham_bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/iv_create1" />
+
+
+            <ImageView
+                android:id="@+id/iv_video"
+                style="@style/image_attribute_home"
+                android:src="@drawable/ic_video"
+                android:tag="@string/bottom_bar_tag_video"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iv_Profile"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_create1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_Profile"
+                style="@style/image_attribute_home"
+                android:src="@drawable/ic_profile"
+                android:tag="@string/bottom_bar_tag_profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_video"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layoutBottom"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-30dp"
+        app:srcCompat="@drawable/ic_plus"
+        app:borderWidth="1dp"
+        app:backgroundTint="@color/white"/>
+
+</RelativeLayout>
