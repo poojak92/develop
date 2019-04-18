@@ -33,4 +33,5 @@
     <dimen name="img_width_home">30dp</dimen>
     <dimen name="img_height_home">30dp</dimen>
     <dimen name="text_size_bottom_bar">16sp</dimen>
+    <dimen name="text_size_12_sp">12sp</dimen>
 </resources>
