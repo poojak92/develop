@@ -16,29 +16,36 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <ImageView
-            android:id="@+id/img_profile"
+        <RelativeLayout
+            android:id="@+id/rlImage"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/ic_temp"
-            app:layout_constraintDimensionRatio="h,3:1.83"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            app:layout_constraintTop_toTopOf="parent"
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ic_thumbProfile"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="200dp"
-            android:src="@drawable/ic_temp"
-            app:civ_border_color="#FFFFFF"
-            app:civ_border_width="2dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            >
 
+
+            <ImageView
+                android:id="@+id/img_profilebackground"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@drawable/ic_temp"
+                android:layout_alignParentTop="true" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_thumbProfile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/img_profilebackground"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-40dp"
+                android:src="@drawable/ic_temp"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="2dp"
+                />
+
+        </RelativeLayout>
 
 
         <com.scarlett.Ui.CustomeView.CustomTextView
@@ -46,7 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_left"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:paddingTop="4dp"
             android:text="Natalie Portman "
             app:fontType="gotham_bold"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -55,14 +62,14 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ic_thumbProfile"/>
+            app:layout_constraintTop_toBottomOf="@+id/rlImage"/>
 
         <com.scarlett.Ui.CustomeView.CustomTextView
             android:id="@+id/tv_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_left"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:paddingTop="4dp"
             android:text="Natalie.Portman@gmail.com "
             app:fontType="gotham_medium"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -78,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_left"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:paddingTop="4dp"
             android:text="21-098776655 "
             app:fontType="gotham_medium"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -95,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_left"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
+            android:paddingTop="4dp"
             android:text="Pune "
             app:fontType="gotham_medium"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -131,114 +138,16 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
-      <!--  <android.support.constraint.ConstraintLayout
-            android:id="@+id/clinfo"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="h,2:0.5"
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_marginTop="@dimen/layout_top"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_Service"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_Service">
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/clPost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/clfv"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imgPost"
-                    style="@style/image_attribute"
-                    android:src="@drawable/ic_post"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.scarlett.Ui.CustomeView.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/text_left"
-                    android:text="My Post"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/text_size_14_sp"
-                    app:fontType="gotham_book"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgPost" />
-
-
-            </android.support.constraint.ConstraintLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/clfv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/clwallet"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/clPost"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imgfv"
-                    style="@style/image_attribute"
-                    android:src="@drawable/ic_favourite"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.scarlett.Ui.CustomeView.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/text_left"
-                    android:text="My Favourite"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/text_size_14_sp"
-                    app:fontType="gotham_book"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgfv" />
-
-            </android.support.constraint.ConstraintLayout>
-
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/clwallet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/clfv"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imgwallet"
-                    style="@style/image_attribute"
-                    android:src="@drawable/ic_wallet"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.scarlett.Ui.CustomeView.CustomTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/text_left"
-                    android:text="Wallet Balance"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/text_size_14_sp"
-                    app:fontType="gotham_book"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imgwallet" />
-
-            </android.support.constraint.ConstraintLayout>
-
-
-        </android.support.constraint.ConstraintLayout>
--->
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"/>
 
     </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>

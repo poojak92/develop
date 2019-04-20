@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 
 
-public class NavDrawerItem {
+public class ProfileItem {
 	
 	private String title;
 	private int icon;
 	private String price = "0";
 
-    public NavDrawerItem(String title, int icon, String price) {
+    public ProfileItem(String title, int icon, String price) {
         this.title = title;
         this.icon = icon;
         this.price = price;

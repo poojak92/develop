@@ -1,9 +1,11 @@
 package com.scarlett.activity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.scarlett.Fragment.DashBoardFragment;
+import com.scarlett.Fragment.ProfileFragment;
 import com.scarlett.R;
 import com.scarlett.activity.base.BaseBackstackManagerActivity;
 
@@ -31,4 +33,7 @@ public class HomeActivity extends BaseBackstackManagerActivity {
     }
 
 
+    public void loadProfileFragment(View view) {
+        doChangeFragment(ProfileFragment.newInstance(), ProfileFragment.TAG, false);
+    }
 }

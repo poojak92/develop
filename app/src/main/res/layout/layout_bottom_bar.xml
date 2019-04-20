@@ -84,6 +84,7 @@
                 style="@style/image_attribute_home"
                 android:src="@drawable/ic_profile"
                 android:tag="@string/bottom_bar_tag_profile"
+                android:onClick="loadProfileFragment"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
