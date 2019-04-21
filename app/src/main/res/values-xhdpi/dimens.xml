@@ -32,4 +32,8 @@
     <dimen name="img_height_home">30dp</dimen>
     <dimen name="text_size_bottom_bar">16sp</dimen>
     <dimen name="text_size_12_sp">12sp</dimen>
+    <dimen name="img_thumb">50dp</dimen>
+    <dimen name="img_width_profile">14dp</dimen>
+    <dimen name="text_size_10_sp">10sp</dimen>
+
 </resources>

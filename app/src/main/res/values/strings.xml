@@ -31,6 +31,20 @@
     <string name="bottom_bar_tag_video">VIEW_TAG_VIDEO</string>
     <string name="bottom_bar_tag_profile">VIEW_TAG_PROFILE</string>
     <string name="bootom_bar_create">Create</string>
-    <string name="text_loginwith">Sign in via Facebook or Google</string>
+    <string name="text_loginwith">Sign in via Facebook</string>
+    <string name="txt_skip">Skip</string>
+    <string name="button_facebook">Facebook</string>
+    <string name="txt_desc">Unless required by applicable law or agreed to in writing,
+        software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR
+        CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing
+        permissions and limitations under the License.Unless required by applicable law or agreed to in writing,
+        software distributed under the License is distributed on an \"AS IS\" BASIS, WITHOUT WARRANTIES OR
+        CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing
+        permissions and limitations under the License.</string>
+
+
+    <string name="read_more">See more</string>
+    <string name="read_less">See less</string>
+
 
 </resources>

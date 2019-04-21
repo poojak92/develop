@@ -59,13 +59,20 @@
         <item name="android:textSize">@dimen/msg_error</item>
     </style>
 
-    <style name="image_attribute">
-        <item name="android:layout_width">@dimen/img_width</item>
-        <item name="android:layout_height">@dimen/img_height</item>
+    <style name="image_profile_attribute">
+        <item name="android:layout_width">@dimen/img_width_profile</item>
+        <item name="android:layout_height">@dimen/img_width_profile</item>
     </style>
 
     <style name="image_attribute_home">
         <item name="android:layout_width">@dimen/img_width_home</item>
         <item name="android:layout_height">@dimen/img_height_home</item>
     </style>
+
+    <style name="image_thumb">
+        <item name="android:layout_width">@dimen/img_thumb</item>
+        <item name="android:layout_height">@dimen/img_thumb</item>
+    </style>
+
+
 </resources>

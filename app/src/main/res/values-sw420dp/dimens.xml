@@ -18,11 +18,14 @@
     <dimen name="text_size_18_sp">18sp</dimen>
     <dimen name="text_size_14_sp">14sp</dimen>
     <dimen name="text_left">8dp</dimen>
-    <dimen name="img_width">26dp</dimen>
+
     <dimen name="img_height">26dp</dimen>
     <dimen name="bottom_bar_margin">10dp</dimen>
-    <dimen name="img_width_home">30dp</dimen>
+    <dimen name="img_width_home">34dp</dimen>
     <dimen name="img_height_home">30dp</dimen>
     <dimen name="text_size_bottom_bar">16sp</dimen>
     <dimen name="text_size_12_sp">12sp</dimen>
+    <dimen name="img_thumb">50dp</dimen>
+    <dimen name="img_width_profile">14dp</dimen>
+    <dimen name="text_size_10_sp">10sp</dimen>
 </resources>

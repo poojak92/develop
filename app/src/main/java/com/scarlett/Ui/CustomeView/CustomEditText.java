@@ -2,7 +2,6 @@ package com.scarlett.Ui.CustomeView;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -12,7 +11,6 @@ import android.util.Log;
 
 import com.scarlett.R;
 import com.scarlett.Ui.Callback.IOnTextPastedListener;
-import com.scarlett.Validation.DecimalFilter;
 import com.scarlett.constants.AppConstants;
 import com.scarlett.helper.FontHelper;
 
@@ -115,7 +113,7 @@ public class CustomEditText extends AppCompatEditText {
         boolean isAmountField = a.getBoolean(R.styleable.filterType_isAmountField, false);
 
         if (isAmountField) {
-            setFilters(new InputFilter[] {new DecimalFilter()});
+          //  setFilters(new InputFilter[] {new DecimalFilter()});
 
            /* addOnTextPastedListener(new IOnTextPastedListener() {
                 @Override

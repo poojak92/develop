@@ -26,8 +26,6 @@
                 layout="@layout/layout_generic_toolbar"
                 android:visibility="gone" />
 
-
-
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/cl_login_bottom"
                 android:layout_width="match_parent"
@@ -40,6 +38,8 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent">
+
+
 
                 <android.support.v7.widget.CardView
                     android:id="@+id/cv_login"
@@ -76,20 +76,12 @@
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.scarlett.Ui.CustomeView.CustomTextView
-                                android:id="@+id/tv_loginwith"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/text_loginwith"
-                                android:textColor="@color/colorblack"
-                                android:textSize="@dimen/forgot_text"
-                                android:layout_marginTop="@dimen/layout_top"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
                             <RelativeLayout
                                 android:id="@+id/llfb"
+                                android:background="@android:color/white"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/layout_top"
@@ -97,36 +89,44 @@
                                 android:orientation="horizontal"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/tv_loginwith">
+                                app:layout_constraintTop_toBottomOf="@+id/iv_logo">
 
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:id="@+id/img_fb"
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
-                                    android:src="@drawable/ic_fb"
-                                    app:civ_border_color="#fff"
-                                    app:civ_border_width="2dp" />
+                                <FrameLayout
+                                    android:id="@+id/FrameLayout1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <!--  <com.facebook.login.widget.LoginButton
+                                          android:id="@+id/login_button"
+                                          android:layout_width="wrap_content"
+                                          android:layout_height="wrap_content"
+                                          android:visibility="gone" />-->
+
+                                    <com.scarlett.Ui.CustomeView.CustomButton
+                                        android:id="@+id/fb"
+                                        android:layout_width="fill_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/btn_fb_login"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="16dp"
+                                        android:textAllCaps="false"
+                                        android:gravity="center"
+                                        style="?android:attr/borderlessButtonStyle"
+                                        android:enabled="true"
+                                        android:text="@string/button_facebook"
+                                        android:visibility="visible"
+                                        app:fontType="gotham_medium"
+                                        />
+                                </FrameLayout>
 
 
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:id="@+id/img_google"
-                                    android:layout_width="80dp"
-                                    android:layout_height="80dp"
-                                    android:layout_alignTop="@id/img_fb"
-                                    android:layout_alignBottom="@id/img_fb"
-                                    android:layout_marginLeft="-8dp"
-
-                                    android:layout_toRightOf="@+id/img_fb"
-                                    android:src="@drawable/ic_google"
-                                    app:civ_border_color="#fff"
-                                    app:civ_border_width="2dp" />
                             </RelativeLayout>
 
                             <com.scarlett.Ui.CustomeView.CustomTextInputLayout
                                 android:id="@+id/til_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/btn_register_top"
+                                android:layout_marginTop="@dimen/layout_top"
                                 android:hint="@string/enter_emailaddress"
                                 android:theme="@style/TextInputLayoutHintStyle"
                                 app:layout_constraintLeft_toLeftOf="parent"
@@ -187,7 +187,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginTop="@dimen/text_top"
+                                android:layout_marginTop="@dimen/btn_register_top"
                                 android:background="@drawable/btn_login"
                                 android:enabled="true"
                                 android:onClick="startActivity"
@@ -210,9 +210,28 @@
                                 android:contextClickable="true"
                                 android:text="@string/login_sign_up"
                                 android:textSize="@dimen/login_sign_up"
+                                app:fontType="gotham_book"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+                            <com.scarlett.Ui.CustomeView.CustomTextView
+                                android:id="@+id/tv_skip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:contextClickable="true"
+                                app:fontType="gotham_bold"
+                                android:text="@string/txt_skip"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="@dimen/login_sign_up"
+                                android:layout_marginLeft="@dimen/layout_left"
+                                android:layout_marginTop="@dimen/btn_register_top"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/btn_login"
+                                app:layout_constraintTop_toBottomOf="@+id/btn_login"
+                                app:layout_constraintLeft_toRightOf="@+id/tv_sign_up" />
+
 
 
                         </android.support.constraint.ConstraintLayout>

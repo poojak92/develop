@@ -21,7 +21,7 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                style="@style/image_attribute"
+                style="@style/image_profile_attribute"
                 android:src="@drawable/ic_post"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
