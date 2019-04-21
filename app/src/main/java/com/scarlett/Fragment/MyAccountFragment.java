@@ -17,8 +17,8 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends BaseFragment {
-    public static String TAG = ProfileFragment.class.getName();
+public class MyAccountFragment extends BaseFragment {
+    public static String TAG = MyAccountFragment.class.getName();
     String[] Menu = {
             "Wallet",
             "Recharge",
@@ -47,23 +47,23 @@ public class ProfileFragment extends BaseFragment {
     ProfileItem profileItem;
     ArrayList<ProfileItem> profileItems;
 
-    public ProfileFragment() {
+    public MyAccountFragment() {
         // Required empty public constructor
     }
 
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
+    public static MyAccountFragment newInstance() {
+        return new MyAccountFragment();
     }
 
     @Override
     protected int getRootView() {
-        return R.layout.fragment_profile;
+        return R.layout.fragment_myaccount;
     }
 
 
     @Override
     protected void init() {
-        setProfileItem();
+       setProfileItem();
 
     }
 

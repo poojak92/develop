@@ -2,11 +2,10 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:layout_marginTop="?android:attr/actionBarSize"
+    android:layout_marginTop="200dp"
     >
 
     <android.support.constraint.ConstraintLayout
@@ -22,6 +21,7 @@
             android:layout_height="wrap_content"
             android:background="@color/colorBackground"
             app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
 
             >
 
@@ -47,6 +47,15 @@
 
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/img_thumbPhotoedit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="@dimen/btn_register_top"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_edit" />
 
         <com.scarlett.Ui.CustomeView.CustomTextView
             android:id="@+id/tv_name"
@@ -62,7 +71,7 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rlImage"/>
+            app:layout_constraintTop_toBottomOf="@+id/img_thumbPhotoedit"/>
 
         <com.scarlett.Ui.CustomeView.CustomTextView
             android:id="@+id/tv_email"
@@ -124,26 +133,12 @@
             app:layout_constraintRight_toRightOf="parent"
             android:layout_marginTop="@dimen/layout_top"></View>
 
-        <com.scarlett.Ui.CustomeView.CustomTextView
-            android:id="@+id/tv_Service"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/text_left"
-            android:text="Service"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/text_size_18_sp"
-            app:fontType="gotham_bold"
-            android:layout_marginTop="@dimen/layout_top"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_marginTop="@dimen/layout_top"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_Service"
+            app:layout_constraintTop_toBottomOf="@+id/view"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

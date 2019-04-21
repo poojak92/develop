@@ -8,7 +8,7 @@ import com.scarlett.Manager.FragmentBackStackManager;
 import com.scarlett.R;
 
 
-public abstract class BaseBackstackManagerActivity extends BaseAcitivity {
+public abstract class BaseBackstackManagerActivity extends BaseToolbarActivity {
 
     protected FragmentBackStackManager mFragmentBackStackManager;
     protected FragmentManager mFragmentManager;

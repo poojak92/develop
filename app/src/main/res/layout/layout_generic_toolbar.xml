@@ -98,7 +98,7 @@
                    android:focusable="true"
                    android:clickable="true"
                    app:fontType="gotham_medium"
-                   android:text="Title"
+                   android:text="@string/app_name"
                    app:layout_constraintLeft_toLeftOf="parent"
                    app:layout_constraintTop_toTopOf="parent"
                    android:layout_marginLeft="10dp"/>
