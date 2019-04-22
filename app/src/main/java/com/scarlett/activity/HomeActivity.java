@@ -96,7 +96,6 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
                 break;
         }
     }
-
     public void createVideoGallery(){
         if(!flagClick){
             flagClick=true;
