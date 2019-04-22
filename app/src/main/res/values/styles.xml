@@ -64,6 +64,11 @@
         <item name="android:layout_height">@dimen/img_width_profile</item>
     </style>
 
+    <style name="image_account_attribute">
+        <item name="android:layout_width">@dimen/img_width_account</item>
+        <item name="android:layout_height">@dimen/img_width_account</item>
+    </style>
+
     <style name="image_attribute_home">
         <item name="android:layout_width">@dimen/img_width_home</item>
         <item name="android:layout_height">@dimen/img_height_home</item>

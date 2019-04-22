@@ -33,7 +33,7 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     ConstraintLayout mClCustomOption;
 
     boolean flagClick = false;
-
+    String mClickedTag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +47,6 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     public void loadDashBoardFragment(){
         doChangeFragment(DashBoardFragment.newInstance(), DashBoardFragment.TAG, false);
     }
-
-   /* public void loadProfileFragment(View view) {
-        doChangeFragment(MyAccountFragment.newInstance(), MyAccountFragment.TAG, false);
-    }
-
-    public void loadVideoFragment(View view) {
-        doChangeFragment(VideoFragment.newInstance(), VideoFragment.TAG, false);
-    }
-
-    public void loadGalleryFragment(View view) {
-        doChangeFragment(GalleryFragment.newInstance(), GalleryFragment.TAG, false);
-    }*/
 
     public void loadProfileFragment() {
         doChangeFragment(MyAccountFragment.newInstance(), MyAccountFragment.TAG, false);
@@ -92,6 +80,7 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     public void onBottomBarItemClicked(String clickedTag) {
        clearBackStackInclusive();
        clearBackStack();
+       mClickedTag=clickedTag;
         switch (clickedTag) {
             case AppConstants.BottomBar.ViewTags.VIEW_TAG_HOME:
                 loadDashBoardFragment();
@@ -109,7 +98,6 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     }
 
     public void createVideoGallery(){
-
         if(!flagClick){
             flagClick=true;
             mClCustomOption.setVisibility(View.VISIBLE);
@@ -117,23 +105,23 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
             flagClick=false;
             mClCustomOption.setVisibility(View.GONE);
         }
-
-
     }
+
+
 
 
     @Override
     public void onBackPressed() {
-      /*  if (mTAG.equals(GalleryFragment.TAG) || mTAG.equals(VideoFragment.TAG)
+        if (mTAG.equals(GalleryFragment.TAG) || mTAG.equals(VideoFragment.TAG)
                 || mTAG.equals(MyAccountFragment.TAG)){
             loadDashBoardFragment();
         }else {
             super.onBackPressed();
             finish();
-        }*/
+        }
 
-        super.onBackPressed();
-        finish();
+       // super.onBackPressed();
+        //finish();
     }
 
     public void openDialog(View view) {

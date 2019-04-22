@@ -51,14 +51,14 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     };
 
     int[] Menu_imageId = {
+            R.drawable.ic_wallet,
+            R.drawable.ic_recharge,
+            R.drawable.ic_withdraw,
+            R.drawable.ic_trans,
+            R.drawable.ic_follower,
+            R.drawable.ic_share1,
             R.drawable.ic_about,
-            R.drawable.ic_about,
-            R.drawable.ic_about,
-            R.drawable.ic_about,
-            R.drawable.ic_about,
-            R.drawable.ic_about,
-            R.drawable.ic_about,
-            R.drawable.ic_about
+            R.drawable.ic_logout
     };
 
     @BindView(R.id.recyclerView)
