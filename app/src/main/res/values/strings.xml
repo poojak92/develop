@@ -62,4 +62,10 @@
     <string name="text_create_video">Create Video</string>
 
 
+    <string name="camera_profile_pic_permission_alert">We need permission to write on your device external storage and open camera, without which we can not change your profile picture.\nPlease grant requested permission.</string>
+    <string name="permission_request_header">Permission Request</string>
+
+    <string name="dialog_button_ok">Ok</string>
+    <string name="dialog_button_yes">Yes</string>
+    <string name="dialog_button_cancel">Cancel</string>
 </resources>

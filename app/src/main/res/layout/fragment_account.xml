@@ -28,11 +28,12 @@
             <ImageView
                 android:id="@+id/img_profilebackground"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="180dp"
                 android:background="@drawable/ic_temp"
                 android:layout_alignParentTop="true" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+
+             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_thumbProfile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
@@ -43,6 +44,7 @@
                 app:civ_border_color="#FFFFFF"
                 app:civ_border_width="2dp"
                 />
+
 
         </RelativeLayout>
 

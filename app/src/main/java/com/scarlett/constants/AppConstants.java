@@ -23,4 +23,15 @@ public class AppConstants {
         }
     }
 
+    public class Permission {
+        public static final int GRANTED = 0;
+        public static final int DENIED = 1;
+        public static final int PERMISSION_NEVER_ASK = -1;
+    }
+    public static class RequestCodes {
+        public static final int CAMERA_PERMISSION = 13;
+        public static final int REQUEST_CAPTURE_DOCUMENT = 1001;
+        public static final int CALL_REQUEST = 14;
+        public static final int PERMISSIONS_CAMERA_AND_STORAGE=15;
+    }
 }

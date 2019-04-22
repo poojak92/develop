@@ -1,6 +1,14 @@
 package com.scarlett.Fragment;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,21 +16,28 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.scarlett.Callback.Fragment.FragmentPresenter;
+import com.scarlett.Callback.IUpdateProfileCommunicator;
+import com.scarlett.Callback.IPermissionCommunicator;
 import com.scarlett.Fragment.base.BaseFragment;
+import com.scarlett.Manager.PermissionManager;
 import com.scarlett.Model.ProfileItem;
+import com.scarlett.Presenter.UserProfilePresenter;
 import com.scarlett.R;
-import com.scarlett.activity.base.BaseToolbarActivity;
 import com.scarlett.adapter.ProfileAdapter;
+import com.scarlett.constants.AppConstants;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 
+import static com.scarlett.constants.AppConstants.RequestCodes.CAMERA_PERMISSION;
+import static com.scarlett.constants.AppConstants.RequestCodes.PERMISSIONS_CAMERA_AND_STORAGE;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyAccountFragment extends BaseFragment {
+public class MyAccountFragment extends BaseFragment implements IUpdateProfileCommunicator, IPermissionCommunicator {
     public static String TAG = MyAccountFragment.class.getName();
     String[] Menu = {
             "Wallet",
@@ -52,12 +67,18 @@ public class MyAccountFragment extends BaseFragment {
     @BindView(R.id.img_back)
     ImageView mImgback;
 
+    @BindView(R.id.iv_thumbProfile)
+    ImageView mIvthumbProfile;
 
+    private UserProfilePresenter userProfilePresenter;
 
     ProfileItem profileItem;
     ArrayList<ProfileItem> profileItems;
 
     FragmentPresenter fragmentPresenter;
+
+    public static final int YOUR_SELECT_PICTURE_REQUEST_CODE = 10;
+
 
     public MyAccountFragment() {
         // Required empty public constructor
@@ -72,11 +93,13 @@ public class MyAccountFragment extends BaseFragment {
         return R.layout.fragment_account;
     }
 
+    Uri outputFileUri;
 
     @Override
     protected void init() {
         initTollbar();
-
+        userProfilePresenter = new UserProfilePresenter(mParentActivity,this);
+        onClick();
     }
     @Override
     public void onAttach(Context context) {
@@ -104,16 +127,75 @@ public class MyAccountFragment extends BaseFragment {
         mRecyclerView.setAdapter(adapter);
     }
 
-    public void initTollbar()
-    {
+    public void initTollbar() {
         mImgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mParentActivity.onBackPressed();
             }
         });
+    }
+    public void onClick(){
+        mIvthumbProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkPermission();
+            }
+        });
+    }
+
+    private void checkPermission() {
+        int Permission1 = PermissionManager.isPermission(mParentActivity, Manifest.permission.CAMERA);
+        int Permission2 = PermissionManager.isPermission(mParentActivity, Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        if (Permission1 == AppConstants.Permission.GRANTED && Permission2 == AppConstants.Permission.GRANTED) {
+           userProfilePresenter.openImageIntent();
+        } else if (Permission1 == AppConstants.Permission.DENIED && Permission2 == AppConstants.Permission.DENIED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSIONS_CAMERA_AND_STORAGE);
+        } else if (Permission1 == AppConstants.Permission.PERMISSION_NEVER_ASK) {
+
+        }
+    }
+
+    public Uri getPickImageResultUri(Intent data) {
+        boolean isCamera = true;
+        if (data != null) {
+            String action = data.getAction();
+            isCamera = action != null && action.equals(MediaStore.ACTION_IMAGE_CAPTURE);
+        }
+        return isCamera ? outputFileUri : data.getData();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, final Intent data) {
+
+        switch (requestCode) {
+            case YOUR_SELECT_PICTURE_REQUEST_CODE:
+                // TODO: 13/2/19   //  LifecycleHandler.sendSignal = true;
+                if (resultCode == getActivity().RESULT_OK) {
+                    if (getPickImageResultUri(data) != null) {
+                        AsyncTask.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                userProfilePresenter.doImageProcess(data);
+
+                            }
+                        });
+                    } else {
+                        AsyncTask.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                userProfilePresenter.doImageProcess(null);
+
+                            }
+                        });
+                    }
+                    break;
 
 
+                }
+
+        }
     }
 
     @Override
@@ -121,5 +203,52 @@ public class MyAccountFragment extends BaseFragment {
         super.onResume();
         fragmentPresenter.passFragmentTag(MyAccountFragment.TAG);
         setProfileItem();
+    }
+
+    @Override
+    public void onImageCompressed(Bitmap compressedBitmap) {
+        mIvthumbProfile.setImageBitmap(compressedBitmap);
+    }
+
+    @Override
+    public void onImageChanged() {
+
+    }
+
+    @Override
+    public void onImageNotChanged(String message) {
+
+    }
+
+    @Override
+    public void onIntentReady(Intent chooseIntent, int requestCode) {
+        startActivityForResult(chooseIntent, YOUR_SELECT_PICTURE_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSIONS_CAMERA_AND_STORAGE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (PermissionManager.isPermission(mParentActivity, Manifest.permission.CAMERA) == 0) {
+                    userProfilePresenter.openImageIntent();
+                }
+            } else if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                boolean isDenied = PermissionManager.isRequestPermissionRationale(mParentActivity, Manifest.permission.CAMERA);
+                String permissionRequiredMessage = mParentActivity.getString(R.string.camera_profile_pic_permission_alert);
+                int flag = AppConstants.Permission.DENIED;
+                if (isDenied) {
+                    flag = AppConstants.Permission.DENIED;
+                } else {
+                    flag = AppConstants.Permission.PERMISSION_NEVER_ASK;
+                }
+                PermissionManager.showPermissionRequiredMessage(this, flag, permissionRequiredMessage, mParentActivity, CAMERA_PERMISSION, permissions);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestForPermission() {
+        requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION);
     }
 }
