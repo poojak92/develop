@@ -32,24 +32,24 @@ public class BottomBarSingleton {
         bottomBarItemMap = new HashMap<>();
 
         BottomBarItem bottomBarhome = new BottomBarItem(mContext);
-        bottomBarhome.setDrawablesFromId(R.drawable.ic_home, R.drawable.ic_home);
+        bottomBarhome.setDrawablesFromId(R.drawable.ic_b_home, R.drawable.ic_home);
         bottomBarItemMap.put(AppConstants.BottomBar.ViewTags.VIEW_TAG_HOME, bottomBarhome);
 
         BottomBarItem bottomBarGallery = new BottomBarItem(mContext);
-        bottomBarGallery.setDrawablesFromId(R.drawable.ic_gallery, R.drawable.ic_gallery);
+        bottomBarGallery.setDrawablesFromId(R.drawable.ic_b_gallery,R.drawable.ic_gallery);
         bottomBarItemMap.put(AppConstants.BottomBar.ViewTags.VIEW_TAG_GALLERY, bottomBarGallery);
 
 
         BottomBarItem bottomBarCreate = new BottomBarItem(mContext);
-        bottomBarCreate.setDrawablesFromId(R.drawable.ic_comment, R.drawable.ic_comment);
+        bottomBarCreate.setDrawablesFromId( R.drawable.ic_comment,R.drawable.ic_comment);
         bottomBarItemMap.put(AppConstants.BottomBar.ViewTags.VIEW_TAG_CREATE, bottomBarCreate);
 
         BottomBarItem bottomBarVideo = new BottomBarItem(mContext);
-        bottomBarVideo.setDrawablesFromId(R.drawable.ic_video, R.drawable.ic_video);
+        bottomBarVideo.setDrawablesFromId(R.drawable.ic_b_video,R.drawable.ic_video);
         bottomBarItemMap.put(AppConstants.BottomBar.ViewTags.VIEW_TAG_VIDEO, bottomBarVideo);
 
         BottomBarItem bottomBarProfile = new BottomBarItem(mContext);
-        bottomBarProfile.setDrawablesFromId(R.drawable.ic_profile, R.drawable.ic_profile);
+        bottomBarProfile.setDrawablesFromId(R.drawable.ic_b_user,R.drawable.ic_profile);
         bottomBarItemMap.put(AppConstants.BottomBar.ViewTags.VIEW_TAG_PROFILE, bottomBarProfile);
 
 

@@ -30,7 +30,16 @@
     <string name="bottom_bar_tag_create">VIEW_TAG_CREATE</string>
     <string name="bottom_bar_tag_video">VIEW_TAG_VIDEO</string>
     <string name="bottom_bar_tag_profile">VIEW_TAG_PROFILE</string>
+
+    <string name="bottom_bar_tag_text_view_home">VIEW_TAG_HOME_TEXT_VIEW</string>
+    <string name="bottom_bar_tag_text_view_gallery">VIEW_TAG_GALLERY_TEXT_VIEW</string>
+    <string name="bottom_bar_tag_text_view_create">VIEW_TAG_CREATE_TEXT_VIEW</string>
+    <string name="bottom_bar_tag_text_view_video">VIEW_TAG_VIDEO_TEXT_VIEW</string>
+    <string name="bottom_bar_tag_text_view_profile">VIEW_TAG_PROFILE_TEXT_VIEW</string>
+
     <string name="bootom_bar_create">Create</string>
+
+
     <string name="text_loginwith">Sign in via Facebook</string>
     <string name="txt_skip">Skip</string>
     <string name="button_facebook">Facebook</string>
@@ -45,6 +54,12 @@
 
     <string name="read_more">See more</string>
     <string name="read_less">See less</string>
+    <string name="bootom_bar_home">Home</string>
+    <string name="bootom_bar_gallery">Gallery</string>
+    <string name="bootom_bar_video">Video</string>
+    <string name="bootom_bar_profile">Profile</string>
+    <string name="text_create_gallery">Create Gallery</string>
+    <string name="text_create_video">Create Video</string>
 
 
 </resources>

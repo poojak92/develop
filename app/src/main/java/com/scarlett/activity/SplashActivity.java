@@ -37,7 +37,7 @@ public class SplashActivity extends BaseAcitivity {
     public Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
 

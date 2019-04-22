@@ -1,112 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_parent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="60dp"
+    android:background="@color/colorPrimary"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
-    <RelativeLayout
-        android:id="@+id/layoutBottom"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true">
+    <ImageView
+        android:id="@+id/iv_home"
+        style="@style/image_attribute_home"
+        android:layout_marginLeft="18dp"
+        android:src="@drawable/ic_home"
+        android:tag="@string/bottom_bar_tag_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/cl_parent1"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary">
-
-            <ImageView
-                android:id="@+id/iv_home"
-                style="@style/image_attribute_home"
-                android:src="@drawable/ic_home"
-                android:tag="@string/bottom_bar_tag_home"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/iv_gallery"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <ImageView
-                android:id="@+id/iv_gallery"
-                style="@style/image_attribute_home"
-                android:src="@drawable/ic_gallery"
-                android:tag="@string/bottom_bar_tag_gallery"
-                android:onClick="loadGalleryFragment"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/iv_create1"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/iv_home"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <ImageView
-                android:id="@+id/iv_create1"
-                style="@style/image_attribute_home"
-                android:src="@drawable/ic_create"
-                android:tag="@string/bottom_bar_tag_create"
-                app:layout_constraintEnd_toStartOf="@+id/iv_video"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/iv_gallery"
-                app:layout_constraintTop_toTopOf="@id/cl_parent1" />
-
-            <com.scarlett.Ui.CustomeView.CustomTextView
-                android:id="@+id/tv_create"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:tag="@string/bottom_bar_tag_create"
-                android:text="@string/bootom_bar_create"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_bottom_bar"
-                android:textStyle="bold"
-                app:fontType="gotham_bold"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/iv_create1" />
-
-
-            <ImageView
-                android:id="@+id/iv_video"
-                style="@style/image_attribute_home"
-                android:src="@drawable/ic_video"
-                android:tag="@string/bottom_bar_tag_video"
-                android:onClick="loadVideoFragment"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/iv_Profile"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/iv_create1"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/iv_Profile"
-                style="@style/image_attribute_home"
-                android:src="@drawable/ic_profile"
-                android:tag="@string/bottom_bar_tag_profile"
-                android:onClick="loadProfileFragment"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/iv_video"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </android.support.constraint.ConstraintLayout>
-
-
-    </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/tv_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/layoutBottom"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="-30dp"
-        app:srcCompat="@drawable/ic_plus"
-        app:borderWidth="1dp"
-        app:backgroundTint="@color/white"/>
+        android:paddingBottom="@dimen/bottom_bar_margin"
+        android:tag="@string/bottom_bar_tag_text_view_home"
+        android:text="@string/bootom_bar_home"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/text_size_bottom_bar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_home"
+        app:layout_constraintRight_toRightOf="@+id/iv_home"
+        app:layout_constraintTop_toBottomOf="@+id/iv_home" />
 
-</RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_gallery"
+        style="@style/image_attribute_home"
+        android:src="@drawable/ic_gallery"
+        android:tag="@string/bottom_bar_tag_gallery"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintLeft_toRightOf="@+id/iv_home"
+        app:layout_constraintRight_toLeftOf="@+id/iv_create"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/tv_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/bottom_bar_margin"
+        android:tag="@string/bottom_bar_tag_text_view_gallery"
+        android:text="@string/bootom_bar_gallery"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/text_size_bottom_bar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_gallery"
+        app:layout_constraintRight_toRightOf="@+id/iv_gallery"
+        app:layout_constraintTop_toBottomOf="@+id/iv_gallery" />
+
+
+    <ImageView
+        android:id="@+id/iv_create"
+        style="@style/image_attribute_home"
+        android:src="@drawable/ic_create"
+        android:tag="@string/bottom_bar_tag_create"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/tv_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/bottom_bar_margin"
+        android:tag="@string/bottom_bar_tag_create"
+        android:text="@string/bootom_bar_create"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_bottom_bar"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:fontType="gotham_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_create"
+        app:layout_constraintRight_toRightOf="@+id/iv_create"
+        app:layout_constraintTop_toBottomOf="@+id/iv_create" />
+
+
+    <ImageView
+        android:id="@+id/iv_video"
+        style="@style/image_attribute_home"
+        android:src="@drawable/ic_video"
+        android:tag="@string/bottom_bar_tag_video"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/iv_create"
+        app:layout_constraintRight_toLeftOf="@+id/iv_profile"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/tv_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/bottom_bar_margin"
+        android:tag="@string/bottom_bar_tag_text_view_video"
+        android:text="@string/bootom_bar_video"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/text_size_bottom_bar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_video"
+        app:layout_constraintRight_toRightOf="@+id/iv_video"
+        app:layout_constraintTop_toBottomOf="@+id/iv_video" />
+
+
+    <ImageView
+        android:id="@+id/iv_profile"
+        style="@style/image_attribute_home"
+        android:layout_marginRight="18dp"
+        android:src="@drawable/ic_profile"
+        android:tag="@string/bottom_bar_tag_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/tv_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/bottom_bar_margin"
+        android:tag="@string/bottom_bar_tag_text_view_profile"
+        android:text="@string/bootom_bar_profile"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/text_size_bottom_bar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_profile"
+        app:layout_constraintRight_toRightOf="@+id/iv_profile"
+        app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
+
+</android.support.constraint.ConstraintLayout>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:background="@android:color/transparent"
+    android:layout_marginBottom="60dp">
+
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/txt_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_create_gallery"
+        android:textColor="@color/colorblack"
+        android:textSize="@dimen/text_size_18_sp"
+        app:fontType="gotham_book"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txt_video"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="@dimen/layout_right"/>
+
+    <com.scarlett.Ui.CustomeView.CustomTextView
+        android:id="@+id/txt_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_create_video"
+        android:textAlignment="center"
+        android:textColor="@color/colorblack"
+        android:background="@android:color/transparent"
+        android:textSize="@dimen/text_size_18_sp"
+        app:fontType="gotham_book"
+        app:layout_constraintEnd_toStartOf="@+id/txt_gallery"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
