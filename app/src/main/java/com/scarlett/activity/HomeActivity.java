@@ -2,6 +2,7 @@ package com.scarlett.activity;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +28,13 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     String mTAG= AppConstants.BottomBar.ViewTags.VIEW_TAG_HOME;
     @BindView(R.id.bottom_bar)
     CustomBottomNavBar mBottomNavBar;
+
+    @BindView(R.id.clCustomOption)
+    ConstraintLayout mClCustomOption;
+
+    boolean flagClick = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_home);
@@ -102,29 +110,14 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
 
     public void createVideoGallery(){
 
-        final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.custom_option);
+        if(!flagClick){
+            flagClick=true;
+            mClCustomOption.setVisibility(View.VISIBLE);
+        }else {
+            flagClick=false;
+            mClCustomOption.setVisibility(View.GONE);
+        }
 
-        // set the custom dialog components - text, image and button
-        TextView txt_gallery = (TextView) dialog.findViewById(R.id.txt_gallery);
-        TextView txt_video = (TextView) dialog.findViewById(R.id.txt_video);
-
-        txt_gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-        txt_video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-
-        dialog.show();
 
     }
 
