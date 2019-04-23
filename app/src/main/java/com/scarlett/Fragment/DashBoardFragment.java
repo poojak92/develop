@@ -1,6 +1,7 @@
 package com.scarlett.Fragment;
 
 import android.content.Context;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.scarlett.R;
 import com.scarlett.Ui.CustomeView.CustomButton;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 /**
@@ -56,4 +58,13 @@ public class DashBoardFragment extends BaseFragment {
     }
 
 
+
+     @OnClick(R.id.img_menu)
+    public void showBottomSheetDialog() {
+        View view = getLayoutInflater().inflate(R.layout.bottom_sheet_dialog, null);
+
+        BottomSheetDialog dialog = new BottomSheetDialog(getContext());
+        dialog.setContentView(view);
+        dialog.show();
+    }
 }

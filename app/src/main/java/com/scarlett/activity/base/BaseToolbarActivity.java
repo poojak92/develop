@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -21,7 +22,7 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
     ImageButton ibToolbarLeft;
 
     @BindView(R.id.ib_toolbar_right)
-    ImageButton ibToolbarRight;
+    ImageView ibToolbarRight;
 
     @BindView(R.id.tv_toolbar_title)
     CustomTextView tvToolbarTitle;
@@ -64,12 +65,11 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
     public void showRightButton(final int id, RightClickListener rightClickListener) {
         if (ibToolbarRight != null) {
             ibToolbarRight.setVisibility(View.VISIBLE);
-            ibToolbarRight.setImageResource(id);
+            ibToolbarRight.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
             this.mRightClickListener = rightClickListener;
         }
 
     }
-
 
     public void showTitle(String title) {
         if (tvToolbarTitle != null) {

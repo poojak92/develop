@@ -41,7 +41,6 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
         super.onCreate(savedInstanceState);
         loadDashBoardFragment();
         mBottomNavBar.setmIOnBottomBarItemClickListener(this);
-
     }
 
     public void loadDashBoardFragment(){
@@ -65,6 +64,16 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
         mTAG=TAG;
         if(TAG.equals(DashBoardFragment.TAG)) {
             showToolabr();
+            showTitle(getResources().getString(R.string.app_name));
+            showRightButton(R.id.ib_toolbar_right, new RightClickListener() {
+                @Override
+                public void onRightButtonClicked() {
+
+                    mRouter.startActivity(SearchCreaterActivity.class);
+                }
+            });
+
+
         }
         else if(TAG.equals(GalleryFragment.TAG)) {
             showToolabr();

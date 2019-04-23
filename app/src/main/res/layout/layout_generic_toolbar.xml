@@ -56,24 +56,23 @@
                 android:focusable="true"
                 android:clickable="true"
                 app:fontType="gotham_medium"
-                android:text="slkldldd"
+                android:text="@string/app_name"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="@+id/ib_toolbar_left"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginLeft="10dp"/>
 
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/ib_toolbar_right"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:paddingRight="@dimen/toolbar_drawable_padding"
-                android:paddingTop="@dimen/toolbar_drawable_padding"
-                android:paddingBottom="@dimen/toolbar_drawable_padding"
-                android:background="@android:color/transparent"
+                android:layout_marginRight="@dimen/layout_right"
                 android:clickable="true"
                 android:focusable="true"
-                android:visibility="invisible"
+                android:visibility="gone"
+                android:src="@drawable/ic_search"
+                android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +80,7 @@
 
            <android.support.constraint.ConstraintLayout
                android:id="@+id/cl_white_title_layout"
-               android:visibility="visible"
+               android:visibility="gone"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintTop_toTopOf="parent"
                app:layout_constraintLeft_toRightOf="@+id/ib_toolbar_left"
