@@ -18,6 +18,6 @@
     <color name="colorblack">#000</color>
     <color name="colorFacebook">#415e9e</color>
     <color name="colorFb">#416BC1</color>
-
+    <color name="layoutcolor">#30000000</color>
 
 </resources>

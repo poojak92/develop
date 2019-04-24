@@ -1,58 +1,128 @@
 package com.scarlett.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.scarlett.Model.ProfileItem;
 import com.scarlett.R;
+import com.scarlett.Utils.EqualSpacingItemDecoration;
 import com.scarlett.activity.base.BaseToolbarActivity;
+import com.scarlett.adapter.SearchCreatorAdapter;
 
-public class SearchCreaterActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+import butterknife.BindView;
+
+public class SearchCreaterActivity extends BaseToolbarActivity {
 
 
-    Toolbar mToolbar;
+    @BindView(R.id.img_search)
+    ImageView mImgSearch;
+
+    @BindView(R.id.edt_search)
+    EditText mEdtSearch;
+
+    String[] Menu = {
+            "Jennifer Aniston",
+            "Angelina",
+            "Monica",
+            "Natalie",
+            "Hilary",
+            "Catherine"
+
+    };
+
+    int[] Menu_imageId = {
+            R.drawable.ic_wallet,
+            R.drawable.ic_recharge,
+            R.drawable.ic_withdraw,
+            R.drawable.ic_trans,
+            R.drawable.ic_follower,
+            R.drawable.ic_share1
+
+    };
+
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+
+    ProfileItem profileItem;
+    ArrayList<ProfileItem> profileItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        super.onCreate(savedInstanceState);
+
+
+        showLeftButton(R.drawable.ic_toolbar_back, new BaseToolbarActivity.ILeftClickListener() {
+            @Override
+            public void onLeftButtonClicked() {
+                onBackPressed();
+            }
+        });
+        addTextChange();
+        setProfileItem();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-
-        MenuItem mSearch = menu.findItem(R.id.action_search);
-
-        SearchView mSearchView = (SearchView) mSearch.getActionView();
-
-        View v = mSearchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
-        v.setBackgroundColor(getResources().getColor(R.color.colorblack));
-
-
-        mSearchView.setQueryHint("Search");
-        mSearchView.setIconified(false);
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+    private void addTextChange() {
+        mImgSearch.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete));
+        mImgSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void onClick(View v) {
+                if (mEdtSearch.getText().length() > 0) {
+                    mEdtSearch.setText("");
+                }
+            }
+        });
+        mEdtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                return true;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                   /* if(count !=0){
+                        mImgSearch.setImageDrawable(getResources().getDrawable(R.drawable.ic_delete));
+                    }else {
+                        mImgSearch.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
+                    }*/
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
-        return super.onCreateOptionsMenu(menu);
     }
+
+    public void setProfileItem() {
+        profileItems = new ArrayList<>();
+        for (int i = 0; i < Menu.length; i++) {
+           /* if (Menu[i].equals("Wallet Balance")) {
+                profileItem = new ProfileItem(Menu[i], Menu_imageId[i], "200");
+            } else {
+                profileItem = new ProfileItem(Menu[i], Menu_imageId[i], "");
+            }*/
+            profileItem = new ProfileItem(Menu[i], Menu_imageId[i], "");
+
+            profileItems.add(profileItem);
+        }
+
+        //creating recyclerview adapter
+        SearchCreatorAdapter adapter = new SearchCreatorAdapter(this, profileItems);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        mRecyclerView.addItemDecoration(new EqualSpacingItemDecoration(16));
+        mRecyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+        mRecyclerView.setAdapter(adapter);
+    }
+
 }

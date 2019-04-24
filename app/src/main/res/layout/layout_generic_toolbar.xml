@@ -30,20 +30,19 @@
 
             <ImageButton
                 android:id="@+id/ib_toolbar_left"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:paddingRight="@dimen/toolbar_drawable_padding"
-                android:paddingLeft="@dimen/toolbar_drawable_padding"
                 android:paddingTop="@dimen/toolbar_drawable_padding"
                 android:paddingBottom="@dimen/toolbar_drawable_padding"
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
-                android:visibility="gone"
                 android:src="@drawable/ic_toolbar_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
 
             <com.scarlett.Ui.CustomeView.CustomTextView

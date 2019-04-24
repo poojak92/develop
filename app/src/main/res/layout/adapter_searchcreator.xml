@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/colorBackground"
+        >
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view_top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            card_view:cardCornerRadius="@dimen/card_view_corner_radius"
+            card_view:cardBackgroundColor="@color/colorBackground"
+
+            >
+
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/room_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_temp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/layoutcolor">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/textViewTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.85"
+                            android:maxLength="30"
+                            android:singleLine="true"
+                            android:text="Oyo Rooms Thane"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            android:textStyle="normal"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/txt_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.35"
+                            android:singleLine="true"
+                            android:text="Rs.1199"
+                            android:textColor="@color/white"
+                            android:textSize="14dp"
+                            android:visibility="gone" />
+
+
+                    </LinearLayout>
+                    <!--<LinearLayout
+                        android:layout_below="@+id/linearLayout"
+                        android:weightSum="2"
+                        android:layout_marginTop="6dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:id="@+id/relativeLayout">
+
+                        <TextView
+                            android:layout_weight="1.90"
+                            android:id="@+id/txt_short_addres"
+                            android:text="Old Parvel,Mumbai"
+                            android:maxLength="30"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+
+
+                            />
+
+                        <TextView
+                            android:layout_weight="0.20"
+                            android:layout_below="@+id/txt_price"
+                            android:id="@+id/txt_pernight"
+                            android:text="per night"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:singleLine="true"
+                            android:textColor="@color/white"
+                            />
+                    </LinearLayout>-->
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+</RelativeLayout>
