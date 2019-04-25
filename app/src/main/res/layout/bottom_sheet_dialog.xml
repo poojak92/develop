@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingBottom="8dp"
     android:paddingTop="8dp">
@@ -14,113 +15,175 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="@dimen/layout_left"
-        android:paddingRight="@dimen/layout_left"
-        android:paddingTop="8dp">
+        android:orientation="horizontal">
 
-
-        <TextView
+        <com.scarlett.Ui.CustomeView.CustomTextView
+            android:id="@+id/txtFollowCreatorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Preview"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+            android:text="Follow Creator Rohit"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_14_sp"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginTop="@dimen/txt_top"
+            android:layout_marginBottom="@dimen/txt_bottom"
+            app:fontType="gotham_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></com.scarlett.Ui.CustomeView.CustomTextView>
+
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_color"
+        ></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="@dimen/layout_left"
-        android:paddingRight="@dimen/layout_left"
-        android:paddingTop="8dp">
+        android:orientation="horizontal">
 
-
-
-        <TextView
+        <com.scarlett.Ui.CustomeView.CustomTextView
+            android:id="@+id/txtSubscribeCreatorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Share"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+            android:text="Subscribe Creator Rohit"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_14_sp"
+            app:fontType="gotham_medium"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginTop="@dimen/txt_top"
+            android:layout_marginBottom="@dimen/txt_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></com.scarlett.Ui.CustomeView.CustomTextView>
+
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_color"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="@dimen/layout_left"
-        android:paddingRight="@dimen/layout_left"
-        android:paddingTop="8dp">
+        android:orientation="horizontal">
 
-
-
-        <TextView
+        <com.scarlett.Ui.CustomeView.CustomTextView
+            android:id="@+id/txtviewPost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Get link"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+            android:text="View Post"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_14_sp"
+            app:fontType="gotham_medium"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginTop="@dimen/txt_top"
+            android:layout_marginBottom="@dimen/txt_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></com.scarlett.Ui.CustomeView.CustomTextView>
+
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_color"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="@dimen/layout_left"
-        android:paddingRight="@dimen/layout_left"
-        android:paddingTop="8dp">
+        android:orientation="horizontal">
 
-
-
-        <TextView
+        <com.scarlett.Ui.CustomeView.CustomTextView
+            android:id="@+id/txtReport"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Make a Copy"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+            android:text="I don't want to see this"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_14_sp"
+            app:fontType="gotham_medium"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginTop="@dimen/txt_top"
+            android:layout_marginBottom="@dimen/txt_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></com.scarlett.Ui.CustomeView.CustomTextView>
+
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_color"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:foreground="?attr/selectableItemBackground"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="@dimen/layout_left"
-        android:paddingRight="@dimen/layout_left"
-        android:paddingTop="8dp">
+        android:orientation="horizontal">
 
-
-
-        <TextView
+        <com.scarlett.Ui.CustomeView.CustomTextView
+            android:id="@+id/txtcopylink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="Email a Copy"
-            android:textColor="#737373"
-            android:textSize="16sp" />
+            android:text="Copy Link"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_14_sp"
+            app:fontType="gotham_medium"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginTop="@dimen/txt_top"
+            android:layout_marginBottom="@dimen/txt_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></com.scarlett.Ui.CustomeView.CustomTextView>
+
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_color"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <com.scarlett.Ui.CustomeView.CustomTextView
+            android:id="@+id/txtreportAdmin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Report to Admin"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_14_sp"
+            app:fontType="gotham_medium"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginTop="@dimen/txt_top"
+            android:layout_marginBottom="@dimen/txt_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"></com.scarlett.Ui.CustomeView.CustomTextView>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/hint_color"></View>
+
 
 </LinearLayout>

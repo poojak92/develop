@@ -1,9 +1,7 @@
 package com.scarlett.activity;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -41,6 +39,12 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
         super.onCreate(savedInstanceState);
         loadDashBoardFragment();
         mBottomNavBar.setmIOnBottomBarItemClickListener(this);
+        showRightButton(R.id.ib_toolbar_right, new RightClickListener() {
+            @Override
+            public void onRightButtonClicked() {
+                mRouter.startActivity(NotificationActivity.class);
+            }
+        });
     }
 
     public void loadDashBoardFragment(){
@@ -70,6 +74,12 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
                 public void onRightButtonClicked() {
 
                     mRouter.startActivity(SearchCreaterActivity.class);
+                }
+            });
+            showNotificationButton(R.id.ib_toolbar_notification, new NotificationClickListener() {
+                @Override
+                public void onNotificationButtonClicked() {
+                    mRouter.startActivity(NotificationActivity.class);
                 }
             });
 

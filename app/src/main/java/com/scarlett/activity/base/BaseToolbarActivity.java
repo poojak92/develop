@@ -24,6 +24,11 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
     @BindView(R.id.ib_toolbar_right)
     ImageView ibToolbarRight;
 
+    @BindView(R.id.ib_toolbar_notification)
+    ImageView ibToolbarNotification;
+
+
+
     @BindView(R.id.tv_toolbar_title)
     CustomTextView tvToolbarTitle;
 
@@ -46,7 +51,7 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
 
     private RightClickListener mRightClickListener;
     private ILeftClickListener mLeftClickListener;
-    protected boolean recreated = false;
+    private NotificationClickListener mNotificationClickListener;
 
 
     @Override
@@ -67,6 +72,13 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
             ibToolbarRight.setVisibility(View.VISIBLE);
             ibToolbarRight.setImageDrawable(getResources().getDrawable(R.drawable.ic_search));
             this.mRightClickListener = rightClickListener;
+        }
+
+    }
+    public void showNotificationButton(final int id, NotificationClickListener notificationClickListener) {
+        if (ibToolbarNotification != null) {
+            ibToolbarNotification.setVisibility(View.VISIBLE);
+            this.mNotificationClickListener = notificationClickListener;
         }
 
     }
@@ -101,6 +113,10 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
         void onRightButtonClicked();
     }
 
+    public interface NotificationClickListener {
+        void onNotificationButtonClicked();
+    }
+
     @OnClick(R.id.ib_toolbar_left)
     public void onClickLeftImage(){
         if (mLeftClickListener != null) {
@@ -113,6 +129,12 @@ public abstract class BaseToolbarActivity extends BaseAcitivity {
     public void onClickRightImage(){
         if (mRightClickListener != null) {
             mRightClickListener.onRightButtonClicked();
+        }
+    }
+    @OnClick(R.id.ib_toolbar_notification)
+    public void onClickNotificationImage(){
+        if (mNotificationClickListener != null) {
+            mNotificationClickListener.onNotificationButtonClicked();
         }
     }
 

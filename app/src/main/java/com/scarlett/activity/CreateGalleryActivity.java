@@ -60,6 +60,6 @@ public class CreateGalleryActivity extends BaseAcitivity {
     }
 
     public void startActivity(View view) {
-        mRouter.startActivity(HomeActivity.class);
+        mRouter.startActivityClearTop(HomeActivity.class);
     }
 }

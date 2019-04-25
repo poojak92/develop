@@ -38,4 +38,6 @@
     <dimen name="img_width_profile">14dp</dimen>
     <dimen name="text_size_10_sp">10sp</dimen>
     <dimen name="img_width_account">22dp</dimen>
+    <dimen name="txt_top">10dp</dimen>
+    <dimen name="txt_bottom">10dp</dimen>
 </resources>

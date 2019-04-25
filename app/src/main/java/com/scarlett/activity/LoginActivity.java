@@ -1,15 +1,12 @@
 package com.scarlett.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 
@@ -39,7 +36,7 @@ public class LoginActivity extends BaseAcitivity {
 
     public void startActivity(View view) {
 
-        mRouter.startActivity(RegisterActivity.class);
+        mRouter.startActivityClearTop(RegisterActivity.class);
     }
 
     public void setLoginSpan(){
@@ -51,7 +48,7 @@ public class LoginActivity extends BaseAcitivity {
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View textView) {
-                mRouter.startActivity(RegisterActivity.class);
+                mRouter.startActivityClearTop(RegisterActivity.class);
             }
             @Override
             public void updateDrawState(TextPaint ds) {

@@ -21,30 +21,33 @@ public class Router {
         this.mParentActivity = appCompatActivity;
     }
 
-    public void startActivity(Class nextClassActivity) {
+    public void startActivityClearTop(Class nextClassActivity) {
         mParentActivity.startActivity(new Intent(mParentActivity, nextClassActivity).setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP));
 
+    }
+    public void startActivity(Class nextClassActivity) {
+        mParentActivity.startActivity(new Intent(mParentActivity, nextClassActivity));
     }
 
     // Checks if called for finishing calling activity only if so finishes calling actvity
     // If not checks if called for finishing all activities in the back stack if so finishes all activites in the back stack
-    public void startActivity(Class nextClassActivity, boolean finishParent, boolean finishAffinity) {
+    public void startActivityClearTop(Class nextClassActivity, boolean finishParent, boolean finishAffinity) {
         if (finishParent) {
             mParentActivity.finish();
         } else if (finishAffinity) {
             mParentActivity.finishAffinity();
         }
-        startActivity(nextClassActivity);
+        startActivityClearTop(nextClassActivity);
     }
 
 
     // For starting activity with extras
-    public void startActivity(Class nextClassActivity, Bundle extras) {
+    public void startActivityClearTop(Class nextClassActivity, Bundle extras) {
         Intent intent = returnIntent(nextClassActivity);
         if (extras != null) {
             intent.putExtras(extras);
         }
-        startActivity(nextClassActivity);
+        startActivityClearTop(nextClassActivity);
     }
 
     // Starts activity for result
@@ -78,7 +81,7 @@ public class Router {
     }
 
     public void startMain2Activity() {
-       // startActivity(Main2Activity.class);
+       // startActivityClearTop(Main2Activity.class);
     }
 
 

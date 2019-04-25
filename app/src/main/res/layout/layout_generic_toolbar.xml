@@ -30,14 +30,13 @@
 
             <ImageButton
                 android:id="@+id/ib_toolbar_left"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:paddingRight="@dimen/toolbar_drawable_padding"
-                android:paddingTop="@dimen/toolbar_drawable_padding"
-                android:paddingBottom="@dimen/toolbar_drawable_padding"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:background="@android:color/transparent"
                 android:clickable="true"
                 android:focusable="true"
+                android:padding="5dp"
+                android:visibility="gone"
                 android:src="@drawable/ic_toolbar_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -57,10 +56,9 @@
                 app:fontType="gotham_medium"
                 android:text="@string/app_name"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="@+id/ib_toolbar_left"
+                app:layout_constraintLeft_toRightOf="@+id/ib_toolbar_left"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginLeft="10dp"/>
-
+                android:layout_marginLeft="@dimen/text_left"/>
 
             <ImageView
                 android:id="@+id/ib_toolbar_right"
@@ -71,6 +69,21 @@
                 android:focusable="true"
                 android:visibility="gone"
                 android:src="@drawable/ic_search"
+                app:layout_constraintRight_toLeftOf="@+id/ib_toolbar_notification"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/ib_toolbar_notification"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="@dimen/layout_right"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                android:src="@drawable/ic_notification"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
