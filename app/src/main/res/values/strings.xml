@@ -69,5 +69,17 @@
     <string name="dialog_button_yes">Yes</string>
     <string name="dialog_button_cancel">Cancel</string>
     <string name="search_title">Search</string>
+
+    /actiivty name
+    <string name="wallet">Wallet</string>
+    <string name="myEarn">My earn</string>
+    <string name="recharge">Recharge</string>
+    <string name="withdraw">Withdraw</string>
+
+    <string name="transaction">Transaction</string>
+    <string name="followers">Followers</string>
+    <string name="aboutus">About us</string>
     <string name="notificaton">Notification</string>
+
+
 </resources>

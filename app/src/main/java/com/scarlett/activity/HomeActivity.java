@@ -99,6 +99,10 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     public void onBottomBarItemClicked(String clickedTag) {
        clearBackStackInclusive();
        clearBackStack();
+       if(flagClick){
+           flagClick=false;
+           mClCustomOption.setVisibility(View.GONE);
+       }
        mClickedTag=clickedTag;
         switch (clickedTag) {
             case AppConstants.BottomBar.ViewTags.VIEW_TAG_HOME:
@@ -130,6 +134,10 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
 
     @Override
     public void onBackPressed() {
+        if(flagClick){
+            flagClick=false;
+            mClCustomOption.setVisibility(View.GONE);
+        }
         if (mTAG.equals(GalleryFragment.TAG) || mTAG.equals(VideoFragment.TAG)
                 || mTAG.equals(MyAccountFragment.TAG)){
             loadDashBoardFragment();

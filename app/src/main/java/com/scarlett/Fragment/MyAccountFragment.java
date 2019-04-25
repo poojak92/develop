@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -23,6 +24,13 @@ import com.scarlett.Manager.PermissionManager;
 import com.scarlett.Model.ProfileItem;
 import com.scarlett.Presenter.UserProfilePresenter;
 import com.scarlett.R;
+import com.scarlett.activity.AboutUsActivity;
+import com.scarlett.activity.FollwersActivity;
+import com.scarlett.activity.MyEarningActivity;
+import com.scarlett.activity.RechargeActivity;
+import com.scarlett.activity.TransactionActivity;
+import com.scarlett.activity.WalletActivity;
+import com.scarlett.activity.WithdrawActivity;
 import com.scarlett.adapter.ProfileAdapter;
 import com.scarlett.constants.AppConstants;
 
@@ -37,10 +45,11 @@ import static com.scarlett.constants.AppConstants.RequestCodes.PERMISSIONS_CAMER
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyAccountFragment extends BaseFragment implements IUpdateProfileCommunicator, IPermissionCommunicator {
+public class MyAccountFragment extends BaseFragment implements IUpdateProfileCommunicator, IPermissionCommunicator,ProfileAdapter.IonSelectionListener {
     public static String TAG = MyAccountFragment.class.getName();
     String[] Menu = {
             "Wallet",
+            "My earn",
             "Recharge",
             "Withdraw",
             "Transaction",
@@ -52,6 +61,7 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
 
     int[] Menu_imageId = {
             R.drawable.ic_wallet,
+            R.drawable.ic_earn,
             R.drawable.ic_recharge,
             R.drawable.ic_withdraw,
             R.drawable.ic_trans,
@@ -94,7 +104,7 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     }
 
     Uri outputFileUri;
-
+    ProfileAdapter profileAdapter;
     @Override
     protected void init() {
         initTollbar();
@@ -121,10 +131,10 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
         }
 
         //creating recyclerview adapter
-        ProfileAdapter adapter = new ProfileAdapter(mParentActivity, profileItems);
+        profileAdapter = new ProfileAdapter(profileItems,this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mParentActivity,4);
         mRecyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
-        mRecyclerView.setAdapter(adapter);
+        mRecyclerView.setAdapter(profileAdapter);
     }
 
     public void initTollbar() {
@@ -250,5 +260,44 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     @Override
     public void onRequestForPermission() {
         requestPermissions(new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION);
+    }
+
+    @Override
+    public void onItemSelected(ProfileItem profileItem, int selectedIndex) {
+
+        String item_name = profileItem.getTitle();
+        if(item_name.equals("Wallet")){
+            mParentActivity.getRouter().startActivity(WalletActivity.class);
+        }else  if(item_name.equals("My earn")){
+            mParentActivity.getRouter().startActivity(MyEarningActivity.class);
+        }else  if(item_name.equals("Recharge")){
+            mParentActivity.getRouter().startActivity(RechargeActivity.class);
+        }else  if(item_name.equals("Withdraw")){
+            mParentActivity.getRouter().startActivity(WithdrawActivity.class);
+        }else  if(item_name.equals("Transaction")){
+            mParentActivity.getRouter().startActivity(TransactionActivity.class);
+        }else  if(item_name.equals("Followers")){
+            mParentActivity.getRouter().startActivity(FollwersActivity.class);
+        }else  if(item_name.equals("Share")){
+            share();
+        }else  if(item_name.equals("About us")){
+            mParentActivity.getRouter().startActivity(AboutUsActivity.class);
+        }else  if(item_name.equals("Logout")){
+
+        }
+
+    }
+
+    @Override
+    public AppCompatActivity getParentActivity() {
+        return mParentActivity;
+    }
+    private void share(){
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getString(R.string.app_name));
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+
     }
 }
