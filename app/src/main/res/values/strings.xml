@@ -80,6 +80,7 @@
     <string name="followers">Followers</string>
     <string name="aboutus">About us</string>
     <string name="notificaton">Notification</string>
+    <string name="txt_description">Description</string>
 
 
 </resources>

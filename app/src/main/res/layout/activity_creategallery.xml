@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:fitsSystemWindows="true"
-    tools:context=".activity.RegisterActivity">
+    tools:context=".activity.CreateGalleryActivity">
 
 
     <android.support.design.widget.CoordinatorLayout
@@ -62,7 +62,7 @@
                         android:fitsSystemWindows="true">
 
 
-                        <android.support.constraint.ConstraintLayout
+                       <!-- <android.support.constraint.ConstraintLayout
                             android:id="@+id/cl_card_child"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -70,110 +70,59 @@
                             android:paddingLeft="@dimen/layout_left"
                             android:paddingRight="@dimen/layout_right"
                             android:paddingBottom="@dimen/layout_bottom">
-
-                            <ImageView
-                                android:id="@+id/iv_logo"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
-                                android:src="@drawable/ic_splash"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintBottom_toTopOf="@+id/til_first_name" />
-
-
-                            <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_first_name"
+-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:orientation="vertical"
+                            >
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/enter_firstName"
-                                android:theme="@style/TextInputLayoutHintStyle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                android:layout_marginTop="@dimen/text_top"
-                                app:layout_constraintTop_toBottomOf="@+id/iv_logo">
-
-                                <com.scarlett.Ui.CustomeView.CustomEditText
-                                    android:id="@+id/et_first_name"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="textCapWords"
-                                    android:maxLength="20"
-                                    android:textSize="@dimen/email_address"
-                                    app:fontType="gotham_book" />
-
-                            </com.scarlett.Ui.CustomeView.CustomTextInputLayout>
-
-                            <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_email"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="@string/enter_emailaddress"
-                                android:theme="@style/TextInputLayoutHintStyle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                android:layout_marginTop="@dimen/text_top"
-                                app:layout_constraintTop_toBottomOf="@+id/til_first_name"
+                                android:orientation="vertical"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
                                >
-
-                                <com.scarlett.Ui.CustomeView.CustomEditText
-                                    android:id="@+id/et_email_address"
+                                <com.scarlett.Ui.CustomeView.CustomTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:inputType="textEmailAddress"
-                                    android:maxLength="50"
-                                    android:textSize="@dimen/email_address"
-                                    app:fontType="gotham_book" />
-
-                            </com.scarlett.Ui.CustomeView.CustomTextInputLayout>
-
-
-                           <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_password"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                               android:layout_marginTop="@dimen/text_top"
-                               android:hint="@string/hint_password"
-                                android:theme="@style/TextInputLayoutHintStyle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/til_email">
-
-                                <com.scarlett.Ui.CustomeView.CustomEditText
-                                    android:id="@+id/et_password"
+                                    android:text="@string/txt_description"
+                                    android:textSize="@dimen/text_size_14_sp"
+                                    android:textColor="@android:color/black"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:paddingTop="5dp"
+                                    android:paddingBottom="5dp"/>
+                                <EditText
+                                    android:id="@+id/edt_suggestion"
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:inputType="textPassword"
-                                    android:maxLength="50"
-                                    android:textSize="@dimen/email_address"
-                                    app:fontType="gotham_book" />
-
-                            </com.scarlett.Ui.CustomeView.CustomTextInputLayout>
-
-
-                            <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_confirmpassword"
-                                android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginRight="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:minLines="6"
+                                    android:gravity="top"
+                                    android:maxLength="500"
+                                    android:paddingLeft="4dp"
+                                    android:paddingTop="4dp"
+                                    android:paddingRight="4dp"
+                                    android:paddingBottom="4dp"
+                                    android:background="@drawable/border"
+                                    android:textCursorDrawable="@drawable/edittextcursorblack"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="@dimen/text_size_14_sp"/>
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/text_top"
-                                android:hint="@string/hint_confirmpassword"
-                                android:theme="@style/TextInputLayoutHintStyle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/til_password"
-                                app:layout_constraintBottom_toTopOf="@+id/btn_register">
-
-                                <com.scarlett.Ui.CustomeView.CustomEditText
-                                    android:id="@+id/et_confirmpassword"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:inputType="textPassword"
-                                    android:maxLength="50"
-                                    android:textSize="@dimen/email_address"
-                                    app:fontType="gotham_book" />
-
-                            </com.scarlett.Ui.CustomeView.CustomTextInputLayout>
-
-
+                                android:gravity="right"
+                                android:layout_marginRight="20dp"
+                                android:layout_gravity="right"
+                                android:text="(Max character 800)"/>
 
 
 
@@ -188,7 +137,7 @@
                                 android:text="@string/button_register"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/button_text_size"
-                                android:visibility="visible"
+                                android:visibility="gone"
                                 app:fontType="gotham_medium"
                                 android:onClick="startActivity"
                                 style="?android:attr/borderlessButtonStyle"
@@ -197,88 +146,15 @@
                                 app:layout_constraintTop_toBottomOf="@+id/til_confirmpassword" />
 
 
-                            <android.support.constraint.ConstraintLayout
-                                android:id="@+id/cl_bottom_view"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                >
 
-
-                                <com.scarlett.Ui.CustomeView.CustomTextView
-                                    android:id="@+id/tv_msg"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:contextClickable="true"
-                                    android:text="@string/msg_signup"
-                                    android:textSize="@dimen/login_sign_up"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintLeft_toLeftOf="parent"
-                                    app:layout_constraintRight_toRightOf="parent"
-                                    app:layout_constraintBottom_toTopOf="@+id/ll_msg"
-
-                                    />
-
-                                <LinearLayout
-                                    android:id="@+id/ll_msg"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:gravity="center"
-                                    android:layout_marginTop="2dp"
-                                    app:layout_constraintLeft_toLeftOf="parent"
-                                    app:layout_constraintRight_toRightOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/tv_msg">
-
-                                <com.scarlett.Ui.CustomeView.CustomTextView
-                                    android:id="@+id/tv_privacypolicy"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:contextClickable="true"
-                                    android:text="@string/privacy_policy"
-                                    android:textColor="@color/til_control_normal"
-                                    android:textSize="@dimen/login_sign_up"
-                                   />
-
-                                <com.scarlett.Ui.CustomeView.CustomTextView
-                                    android:id="@+id/tv_and"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:contextClickable="true"
-                                    android:text="@string/and"
-                                    android:textSize="@dimen/login_sign_up"
-                                    android:layout_marginLeft="5dp"
-
-                                    />
-
-                                <com.scarlett.Ui.CustomeView.CustomTextView
-                                    android:id="@+id/tv_terms"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:clickable="true"
-                                    android:contextClickable="true"
-                                    android:text="@string/terms"
-                                    android:textSize="@dimen/login_sign_up"
-                                   android:textColor="@color/til_control_normal"
-                                    android:layout_marginLeft="5dp"
-
-
-                                    />
-                                </LinearLayout>
-
-
-                            </android.support.constraint.ConstraintLayout>
+                        </LinearLayout>
 
 
 
 
 
-                        </android.support.constraint.ConstraintLayout>
+
+                       <!-- </android.support.constraint.ConstraintLayout>-->
 
 
                     </ScrollView>

@@ -95,6 +95,7 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
             hideToolbar();
         }
     }
+
     @Override
     public void onBottomBarItemClicked(String clickedTag) {
        clearBackStackInclusive();
@@ -119,6 +120,7 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
                 break;
         }
     }
+
     public void createVideoGallery(){
         if(!flagClick){
             flagClick=true;
@@ -128,9 +130,6 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
             mClCustomOption.setVisibility(View.GONE);
         }
     }
-
-
-
 
     @Override
     public void onBackPressed() {
@@ -145,9 +144,6 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
             super.onBackPressed();
             finish();
         }
-
-       // super.onBackPressed();
-        //finish();
     }
 
     public void openDialog(View view) {

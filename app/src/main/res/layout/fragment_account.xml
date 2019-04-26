@@ -44,7 +44,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="-40dp"
                 android:src="@drawable/ic_temp"
-                app:civ_border_color="#FFFFFF"
+                app:civ_border_color="@color/colorblack"
                 app:civ_border_width="2dp" />
 
 

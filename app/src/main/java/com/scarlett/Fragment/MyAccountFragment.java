@@ -24,6 +24,7 @@ import com.scarlett.Manager.PermissionManager;
 import com.scarlett.Model.ProfileItem;
 import com.scarlett.Presenter.UserProfilePresenter;
 import com.scarlett.R;
+import com.scarlett.Utils.EqualSpacingItemDecoration;
 import com.scarlett.activity.AboutUsActivity;
 import com.scarlett.activity.FollwersActivity;
 import com.scarlett.activity.MyEarningActivity;
@@ -133,6 +134,8 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
         //creating recyclerview adapter
         profileAdapter = new ProfileAdapter(profileItems,this);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mParentActivity,4);
+        mRecyclerView.addItemDecoration(new EqualSpacingItemDecoration(20));
+        mRecyclerView.addItemDecoration(new EqualSpacingItemDecoration(16,EqualSpacingItemDecoration.HORIZONTAL));
         mRecyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
         mRecyclerView.setAdapter(profileAdapter);
     }
