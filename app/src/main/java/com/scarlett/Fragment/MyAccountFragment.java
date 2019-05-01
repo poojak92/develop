@@ -110,6 +110,7 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     protected void init() {
         initTollbar();
         userProfilePresenter = new UserProfilePresenter(mParentActivity,this);
+        setProfileItem();
         onClick();
     }
     @Override
@@ -215,7 +216,6 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     public void onResume() {
         super.onResume();
         fragmentPresenter.passFragmentTag(MyAccountFragment.TAG);
-        setProfileItem();
     }
 
     @Override
@@ -272,7 +272,7 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
         if(item_name.equals("Wallet")){
             mParentActivity.getRouter().startActivity(WalletActivity.class);
         }else  if(item_name.equals("My earn")){
-            mParentActivity.getRouter().startActivity(MyEarningActivity.class);
+           mParentActivity.getRouter().startActivity(MyEarningActivity.class);
         }else  if(item_name.equals("Recharge")){
             mParentActivity.getRouter().startActivity(RechargeActivity.class);
         }else  if(item_name.equals("Withdraw")){

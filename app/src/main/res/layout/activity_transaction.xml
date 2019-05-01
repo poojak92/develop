@@ -7,5 +7,269 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        layout="@layout/layout_generic_toolbar"/>
+        layout="@layout/layout_generic_toolbar"
+        />
+
+    <android.support.constraint.ConstraintLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_toolbar_parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorBackground">
+
+        <LinearLayout
+            android:id="@+id/lltotalspend"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.scarlett.Ui.CustomeView.CustomTextView
+                android:id="@+id/tv_mycoins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/layout_left"
+                android:layout_marginTop="@dimen/layout_top"
+                android:layout_marginBottom="@dimen/layout_bottom"
+                android:text="Total spend "
+                app:fontType="gotham_bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_18_sp"
+                android:textStyle="bold"
+                />
+
+            <com.scarlett.Ui.CustomeView.CustomTextView
+                android:id="@+id/tv_spendRS12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_left"
+                android:text="200 Coins"
+                android:layout_marginTop="@dimen/layout_top"
+                android:layout_marginBottom="@dimen/layout_bottom"
+                app:fontType="gotham_bold"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="@dimen/text_size_18_sp"
+                />
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clFollwer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_black"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginRight="@dimen/layout_right"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lltotalspend"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                style="@style/image_thumb"
+                android:src="@drawable/ic_temp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorblack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="@dimen/text_top"
+                android:layout_marginBottom="@dimen/text_top"
+                android:layout_marginLeft="@dimen/text_top"
+                />
+
+            <LinearLayout
+                android:id="@+id/llinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                app:layout_constraintLeft_toRightOf="@+id/imageView"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView">
+
+                <com.scarlett.Ui.CustomeView.CustomTextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    android:text="Natalie Portman "
+                    app:fontType="gotham_bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_14_sp"
+                    android:textStyle="bold"
+                    android:paddingTop="@dimen/text_top" />
+
+                <com.scarlett.Ui.CustomeView.CustomTextView
+                    android:id="@+id/tv_transactionId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    android:text="Transaction ID: 101098 "
+                    app:fontType="gotham_medium"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_12_sp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <com.scarlett.Ui.CustomeView.CustomTextView
+                    android:id="@+id/tv_spend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    android:layout_marginTop="2dp"
+                    android:text="Spend:"
+                    app:fontType="gotham_light"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_14_sp"
+                    android:paddingBottom="@dimen/text_top"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_transactionId"
+                    app:layout_constraintLeft_toRightOf="@+id/imageView"/>
+
+                <com.scarlett.Ui.CustomeView.CustomTextView
+                    android:id="@+id/tv_spendRS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_left"
+                    android:layout_marginTop="2dp"
+                    android:text="200 coins"
+                    app:fontType="gotham_light"
+                    android:paddingBottom="@dimen/text_top"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textSize="@dimen/text_size_14_sp"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_transactionId"
+                    app:layout_constraintLeft_toRightOf="@+id/tv_spend"/>
+                </LinearLayout>
+            </LinearLayout>
+            <com.scarlett.Ui.CustomeView.CustomTextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:text="19-02-2019"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_12_sp"
+                android:textStyle="bold"
+                app:fontType="gotham_book"
+                android:paddingTop="@dimen/text_top"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/llinfo" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clFollwer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_black"
+            android:layout_marginTop="@dimen/layout_top"
+            android:layout_marginLeft="@dimen/layout_left"
+            android:layout_marginRight="@dimen/layout_right"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clFollwer"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView1"
+                style="@style/image_thumb"
+                android:src="@drawable/ic_temp"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorblack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginTop="@dimen/text_top"
+                android:layout_marginBottom="@dimen/text_top"
+                android:layout_marginLeft="@dimen/text_top"
+                />
+
+            <LinearLayout
+                android:id="@+id/llinfo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="@+id/imageView1"
+                app:layout_constraintLeft_toRightOf="@+id/imageView1"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView1">
+
+                <com.scarlett.Ui.CustomeView.CustomTextView
+                    android:id="@+id/tv_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    android:text="Natalie Portman "
+                    app:fontType="gotham_bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_14_sp"
+                    android:textStyle="bold"
+                    android:paddingTop="@dimen/text_top" />
+
+                <com.scarlett.Ui.CustomeView.CustomTextView
+                    android:id="@+id/tv_transactionId1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_left"
+                    android:text="Transaction ID: 101098 "
+                    app:fontType="gotham_medium"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size_12_sp"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <com.scarlett.Ui.CustomeView.CustomTextView
+                        android:id="@+id/tv_spend1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/layout_left"
+                        android:layout_marginTop="2dp"
+                        android:text="Spend:"
+                        app:fontType="gotham_light"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/text_size_14_sp"
+                        android:paddingBottom="@dimen/text_top"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_transactionId"
+                        app:layout_constraintLeft_toRightOf="@+id/imageView"/>
+
+                    <com.scarlett.Ui.CustomeView.CustomTextView
+                        android:id="@+id/tv_spendRS1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_left"
+                        android:layout_marginTop="2dp"
+                        android:text="200 coins"
+                        app:fontType="gotham_light"
+                        android:paddingBottom="@dimen/text_top"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:textSize="@dimen/text_size_14_sp"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_transactionId"
+                        app:layout_constraintLeft_toRightOf="@+id/tv_spend"/>
+                </LinearLayout>
+            </LinearLayout>
+            <com.scarlett.Ui.CustomeView.CustomTextView
+                android:id="@+id/tv_date1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp"
+                android:text="19-02-2019"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_size_12_sp"
+                android:textStyle="bold"
+                app:fontType="gotham_book"
+                android:paddingTop="@dimen/text_top"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/llinfo1" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
