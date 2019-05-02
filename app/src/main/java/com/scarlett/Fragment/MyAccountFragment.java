@@ -51,7 +51,6 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     String[] Menu = {
             "Wallet",
             "My earn",
-            "Recharge",
             "Withdraw",
             "Transaction",
             "Followers",
@@ -63,7 +62,6 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     int[] Menu_imageId = {
             R.drawable.ic_wallet,
             R.drawable.ic_earn,
-            R.drawable.ic_recharge,
             R.drawable.ic_withdraw,
             R.drawable.ic_trans,
             R.drawable.ic_follower,

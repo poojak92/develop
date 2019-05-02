@@ -1,5 +1,6 @@
 package com.scarlett.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyEarningActivity extends BaseToolbarActivity {
- //   private Toolbar toolbar;
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -32,16 +33,13 @@ public class MyEarningActivity extends BaseToolbarActivity {
             }
         });
         showTitle(getResources().getString(R.string.myEarn));
-     //   toolbar = (Toolbar) findViewById(R.id.toolbar);
-      //  setSupportActionBar(toolbar);
-
-      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
