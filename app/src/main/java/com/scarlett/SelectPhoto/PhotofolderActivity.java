@@ -1,16 +1,29 @@
 package com.scarlett.SelectPhoto;
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 
 import com.scarlett.R;
 import com.scarlett.activity.base.BaseToolbarActivity;
 
+import java.util.ArrayList;
+
+import butterknife.BindView;
+
 
 public class PhotofolderActivity extends BaseToolbarActivity {
     int int_position;
-    private GridView gridView;
+
     SelectPhotoAdapter adapter;
+
+    @BindView(R.id.gv_folder)
+    GridView mGridView;
+
+    @BindView(R.id.btn_next)
+    Button mBtnNext;
 
 
     @Override
@@ -25,10 +38,19 @@ public class PhotofolderActivity extends BaseToolbarActivity {
             }
         });
         showTitle(getResources().getString(R.string.select_photo));
-        gridView = (GridView)findViewById(R.id.gv_folder);
 
+        mBtnNext.setVisibility(View.VISIBLE);
         int_position = getIntent().getIntExtra("value", 0);
+
         adapter = new SelectPhotoAdapter(this,GalleryActivity.al_images,int_position);
-        gridView.setAdapter(adapter);
+        mGridView.setAdapter(adapter);
+    }
+    public void showSelectButton() {
+        ArrayList<String> selectedItems = adapter.getCheckedItems();
+        if (selectedItems.size() > 0) {
+            mBtnNext.setVisibility(View.VISIBLE);
+        } else
+            mBtnNext.setVisibility(View.GONE);
+
     }
 }

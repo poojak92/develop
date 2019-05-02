@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cl_toolbar_parent"
+        android:layout_above="@+id/btn_next"
         android:id="@+id/gv_folder"
         android:numColumns="2"
         android:scrollbars="none"
@@ -24,6 +25,26 @@
         android:layout_marginRight="@dimen/layout_right"></GridView>
 
 
+
+    <com.scarlett.Ui.CustomeView.CustomButton
+        android:id="@+id/btn_next"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/btn_register_top"
+        android:background="@drawable/btn_login"
+        android:enabled="true"
+        android:onClick="startActivity"
+        android:text="@string/button_creategallery"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/button_text_size"
+        android:visibility="gone"
+        app:fontType="gotham_medium"
+        android:layout_marginLeft="@dimen/layout_left"
+        android:layout_marginRight="@dimen/layout_right"
+        android:layout_marginBottom="@dimen/layout_bottom"
+        android:layout_alignParentBottom="true" />
 
 
 

@@ -5,12 +5,15 @@ package com.scarlett.SelectPhoto;
  */
 
 import android.content.Context;
+import android.support.constraint.ConstraintLayout;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -28,6 +31,7 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
     ViewHolder viewHolder;
     ArrayList<Model_images> al_menu = new ArrayList<>();
     int int_position;
+    private SparseBooleanArray mSparseBooleanArray;//Variable to store selected Images
 
 
     public SelectPhotoAdapter(Context context, ArrayList<Model_images> al_menu, int int_position) {
@@ -35,7 +39,7 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         this.al_menu = al_menu;
         this.context = context;
         this.int_position = int_position;
-
+        mSparseBooleanArray = new SparseBooleanArray();
 
     }
 
@@ -72,13 +76,13 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photosfolder, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_selectphotos, parent, false);
             viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
             viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
             viewHolder.ll_camera = (LinearLayout) convertView.findViewById(R.id.ll_camera);
-            viewHolder.ll_image = (LinearLayout) convertView.findViewById(R.id.ll_image);
-          //  viewHolder.checkBox1 = (CheckBox) convertView.findViewById(R.id.checkBox1);
+            viewHolder.ll_image = (ConstraintLayout) convertView.findViewById(R.id.ll_image);
+            viewHolder.mCheckBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
 
 
             convertView.setTag(viewHolder);
@@ -92,6 +96,19 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         viewHolder.ll_image.setVisibility(View.VISIBLE);
         viewHolder.ll_camera.setVisibility(View.GONE);
 
+        viewHolder.mCheckBox.setTag(position);//Set Tag for CheckBox
+        viewHolder.mCheckBox.setChecked(mSparseBooleanArray.get(position));
+        viewHolder.mCheckBox.setOnCheckedChangeListener(mCheckedChangeListener);
+        viewHolder.ll_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewHolder.mCheckBox.setChecked(true);
+                mSparseBooleanArray.put((Integer) viewHolder.mCheckBox.getTag(), true);//Insert selected checkbox value inside boolean array
+                ((PhotofolderActivity) context).showSelectButton();//call custom gallery activity method
+            }
+        });
+
+
         Glide.with(context).load("file://" + al_menu.get(int_position).getAl_imagepath().get(position))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
@@ -101,13 +118,34 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         return convertView;
 
     }
-
     private static class ViewHolder {
         TextView tv_foldern, tv_foldersize;
         ImageView iv_image;
-        LinearLayout ll_camera,ll_image;
-       // CheckBox checkBox1;
+        LinearLayout ll_camera;
+        ConstraintLayout ll_image;
+        CheckBox mCheckBox;
     }
 
+    CompoundButton.OnCheckedChangeListener mCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            mSparseBooleanArray.put((Integer) buttonView.getTag(), isChecked);//Insert selected checkbox value inside boolean array
+            ((PhotofolderActivity) context).showSelectButton();//call custom gallery activity method
+        }
+    };
+
+    //Method to return selected Images
+    public ArrayList<String> getCheckedItems() {
+        ArrayList<String> mTempArry = new ArrayList<String>();
+
+        for (int i = 0; i < al_menu.size(); i++) {
+            if (mSparseBooleanArray.get(i)) {
+                mTempArry.add(al_menu.get(int_position).getAl_imagepath().get(i));
+            }
+        }
+
+        return mTempArry;
+    }
 
 }

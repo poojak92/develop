@@ -102,6 +102,7 @@ public class GalleryActivity extends BaseToolbarActivity {
     }
 
     public ArrayList<Model_images> fn_imagespath() {
+
         al_images.clear();
 
         int int_position = 0;
@@ -139,10 +140,7 @@ public class GalleryActivity extends BaseToolbarActivity {
                     boolean_folder = false;
                 }
             }
-
-
             if (boolean_folder) {
-
                 ArrayList<String> al_path = new ArrayList<>();
                 al_path.addAll(al_images.get(int_position).getAl_imagepath());
                 al_path.add(absolutePathOfImage);
@@ -154,10 +152,7 @@ public class GalleryActivity extends BaseToolbarActivity {
                 Model_images obj_model = new Model_images();
                 obj_model.setStr_folder(cursor.getString(column_index_folder_name));
                 obj_model.setAl_imagepath(al_path);
-
                 al_images.add(obj_model);
-
-
             }
 
 
