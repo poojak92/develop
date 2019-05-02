@@ -1,170 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rl_register"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:fitsSystemWindows="true"
-    tools:context=".activity.CreateGalleryActivity">
+    android:layout_height="match_parent">
 
+    <include
+        layout="@layout/layout_generic_toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.design.widget.CoordinatorLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
+        android:layout_height="0dp"
+        android:background="@color/colorBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_toolbar_parent">
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/cl_view_layout"
+            android:id="@+id/cl_login_bottom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true">
+            android:paddingLeft="@dimen/layout_left"
+            android:paddingTop="@dimen/layout_top"
+            android:paddingRight="@dimen/layout_right"
+            android:paddingBottom="@dimen/layout_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_toolbar_parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <include
-                layout="@layout/layout_generic_toolbar"
-                android:visibility="gone" />
-
-
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/cl_login_bottom"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_register"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:paddingTop="@dimen/layout_top"
-                android:paddingLeft="@dimen/layout_left"
-                android:paddingRight="@dimen/layout_right"
-                android:paddingBottom="@dimen/layout_bottom"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:cardCornerRadius="@dimen/card_view_corner_radius"
+                tools:elevation="@dimen/card_view_elevation">
 
-                <android.support.v7.widget.CardView
-                    android:id="@+id/cv_register"
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:cardBackgroundColor="@android:color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:cardCornerRadius="@dimen/card_view_corner_radius"
-                    tools:elevation="@dimen/card_view_elevation">
+                    android:fillViewport="true"
+                    android:fitsSystemWindows="true"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
 
-                    <ScrollView
+
+                    <android.support.constraint.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scrollbars="none"
-                        android:overScrollMode="never"
-                        android:fillViewport="true"
-                        android:fitsSystemWindows="true">
+                        android:orientation="vertical">
 
+                        <com.scarlett.Ui.CustomeView.CustomTextView
+                            android:id="@+id/tv_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/layout_left"
+                            android:layout_marginTop="@dimen/layout_top"
+                            android:layout_marginRight="@dimen/layout_right"
+                            android:text="@string/txt_description"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/text_size_14_sp"
+                            app:fontType="gotham_medium"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"/>
 
-                       <!-- <android.support.constraint.ConstraintLayout
-                            android:id="@+id/cl_card_child"
+                        <com.scarlett.Ui.CustomeView.CustomEditText
+                            android:id="@+id/edt_desc"
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:paddingTop="@dimen/layout_top"
-                            android:paddingLeft="@dimen/layout_left"
-                            android:paddingRight="@dimen/layout_right"
-                            android:paddingBottom="@dimen/layout_bottom">
--->
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/layout_left"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="@dimen/layout_right"
+                            android:background="@drawable/border"
+                            android:gravity="top"
+                            android:maxLength="800"
+                            android:minLines="6"
+                            android:paddingLeft="4dp"
+                            android:paddingTop="4dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="4dp"
+                            android:textColor="@android:color/black"
+                            android:textCursorDrawable="@drawable/edittextcursorblack"
+                            android:textSize="@dimen/text_size_14_sp"
+                            app:fontType="gotham_black"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_desc"/>
+
+                        <com.scarlett.Ui.CustomeView.CustomTextView
+                            android:id="@+id/tv_maxchar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginRight="@dimen/layout_right"
+                            android:gravity="right"
+                            android:text="(Max character 800)"
+                            android:textColor="@color/colorFb"
+                            android:textSize="@dimen/text_size_12_sp"
+                            app:fontType="gotham_light"
+                            app:layout_constraintTop_toBottomOf="@+id/edt_desc"
+                            app:layout_constraintRight_toRightOf="parent"/>
+
                         <LinearLayout
+                            android:id="@+id/lladdphoto"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginRight="8dp"
-                            android:orientation="vertical"
-                            >
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
-                               >
-                                <com.scarlett.Ui.CustomeView.CustomTextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/txt_description"
-                                    android:textSize="@dimen/text_size_14_sp"
-                                    android:textColor="@android:color/black"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginRight="5dp"
-                                    android:paddingTop="5dp"
-                                    android:paddingBottom="5dp"/>
-                                <EditText
-                                    android:id="@+id/edt_suggestion"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginRight="10dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:minLines="6"
-                                    android:gravity="top"
-                                    android:maxLength="500"
-                                    android:paddingLeft="4dp"
-                                    android:paddingTop="4dp"
-                                    android:paddingRight="4dp"
-                                    android:paddingBottom="4dp"
-                                    android:background="@drawable/border"
-                                    android:textCursorDrawable="@drawable/edittextcursorblack"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="@dimen/text_size_14_sp"/>
-                            </LinearLayout>
-                            <TextView
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center|left"
+                            android:onClick="addPhotos"
+                            android:layout_marginTop="@dimen/layout_top"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_maxchar"
+                            android:layout_marginLeft="@dimen/layout_left"
+                            android:layout_marginRight="@dimen/layout_right"
+                           >
+
+                            <ImageView
+                                android:id="@+id/img_area"
+                                style="@style/image_attribute_home"
+                                android:src="@drawable/ic_camera"
+                                android:layout_marginRight="8dp"/>
+
+                            <com.scarlett.Ui.CustomeView.CustomTextView
+                                android:id="@+id/tv_addPhoto"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:layout_marginRight="20dp"
-                                android:layout_gravity="right"
-                                android:text="(Max character 800)"/>
-
-
-
-                            <com.scarlett.Ui.CustomeView.CustomButton
-                                android:id="@+id/btn_register"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="@dimen/btn_register_top"
-                                android:background="@drawable/btn_login"
-                                android:enabled="true"
-                                android:text="@string/button_register"
-                                android:textColor="@android:color/white"
-                                android:textSize="@dimen/button_text_size"
-                                android:visibility="gone"
-                                app:fontType="gotham_medium"
-                                android:onClick="startActivity"
-                                style="?android:attr/borderlessButtonStyle"
-                                app:layout_constraintLeft_toLeftOf="parent"
-                                app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/til_confirmpassword" />
-
-
+                                android:text="Add Photos"
+                                android:textColor="@color/colordarkgray"
+                                android:textSize="@dimen/text_size_14_sp"
+                                app:fontType="gotham_medium" />
 
                         </LinearLayout>
 
+                        <android.support.v7.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/gv_folder"
+                            android:numColumns="2"
+                            android:visibility="gone"
+                            android:layout_marginTop="@dimen/layout_top"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/btn_creategallery"
+                            app:layout_constraintTop_toBottomOf="@+id/lladdphoto"
+                            android:layout_marginLeft="@dimen/layout_left"
+                            android:layout_marginRight="@dimen/layout_right"></android.support.v7.widget.RecyclerView>
+
+
+                        <com.scarlett.Ui.CustomeView.CustomButton
+                            android:id="@+id/btn_creategallery"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/btn_register_top"
+                            android:background="@drawable/btn_login"
+                            android:enabled="true"
+                            android:onClick="startActivity"
+                            android:text="@string/button_creategallery"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/button_text_size"
+                            android:visibility="visible"
+                            app:fontType="gotham_medium"
+                            android:layout_marginLeft="@dimen/layout_left"
+                            android:layout_marginRight="@dimen/layout_right"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/gv_folder" />
 
 
 
+                    </android.support.constraint.ConstraintLayout>
 
 
-                       <!-- </android.support.constraint.ConstraintLayout>-->
+                </ScrollView>
 
 
-                    </ScrollView>
+            </android.support.v7.widget.CardView>
 
-                </android.support.v7.widget.CardView>
-
-
-            </android.support.constraint.ConstraintLayout>
 
         </android.support.constraint.ConstraintLayout>
-    </android.support.design.widget.CoordinatorLayout>
 
-</RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

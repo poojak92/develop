@@ -1,21 +1,21 @@
 package com.scarlett.activity;
 
-import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
-import android.support.v7.widget.CardView;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.RelativeLayout;
+import android.widget.GridView;
 
 import com.scarlett.R;
-import com.scarlett.Ui.CustomeView.CustomButton;
+import com.scarlett.SelectPhoto.GalleryActivity;
+import com.scarlett.SelectPhoto.SelectPhotoAdapter;
 import com.scarlett.activity.base.BaseAcitivity;
+import com.scarlett.activity.base.BaseToolbarActivity;
 
-import butterknife.BindView;
+public class CreateGalleryActivity extends BaseToolbarActivity {
 
-public class CreateGalleryActivity extends BaseAcitivity {
-
+   /* int int_position;
+    private GridView gridView;
+    SelectPhotoAdapter adapter;
+*/
 
 
     @Override
@@ -23,7 +23,25 @@ public class CreateGalleryActivity extends BaseAcitivity {
         setContentView(R.layout.activity_creategallery);
         super.onCreate(savedInstanceState);
 
+        showLeftButton(R.drawable.ic_toolbar_back, new ILeftClickListener() {
+            @Override
+            public void onLeftButtonClicked() {
+                onBackPressed();
+            }
+        });
+        showTitle(getResources().getString(R.string.text_create_gallery));
+
+
+/*
+        gridView = (GridView)findViewById(R.id.gv_folder);
+        int_position = getIntent().getIntExtra("value", 0);
+        adapter = new SelectPhotoAdapter(this, GalleryActivity.al_images,int_position);
+        gridView.setAdapter(adapter);*/
+
     }
 
 
+    public void addPhotos(View view) {
+        mRouter.startActivity(GalleryActivity.class);
+    }
 }

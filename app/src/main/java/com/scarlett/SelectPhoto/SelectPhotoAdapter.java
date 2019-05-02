@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -74,6 +75,8 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
             viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
             viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
+            viewHolder.ll_camera = (LinearLayout) convertView.findViewById(R.id.ll_camera);
+            viewHolder.ll_image = (LinearLayout) convertView.findViewById(R.id.ll_image);
 
 
             convertView.setTag(viewHolder);
@@ -84,7 +87,8 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         viewHolder.tv_foldern.setVisibility(View.GONE);
         viewHolder.tv_foldersize.setVisibility(View.GONE);
 
-
+        viewHolder.ll_camera.setVisibility(View.VISIBLE);
+        viewHolder.ll_camera.setVisibility(View.GONE);
 
         Glide.with(context).load("file://" + al_menu.get(int_position).getAl_imagepath().get(position))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -99,6 +103,7 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
     private static class ViewHolder {
         TextView tv_foldern, tv_foldersize;
         ImageView iv_image;
+        LinearLayout ll_camera,ll_image;
 
 
     }

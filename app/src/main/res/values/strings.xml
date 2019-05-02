@@ -81,6 +81,8 @@
     <string name="aboutus">About us</string>
     <string name="notificaton">Notification</string>
     <string name="txt_description">Description</string>
+    <string name="button_creategallery">Create Gallery</string>
+    <string name="select_photo">Select Photo</string>
 
 
 </resources>

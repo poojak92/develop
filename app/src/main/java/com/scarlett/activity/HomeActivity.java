@@ -149,4 +149,12 @@ public class HomeActivity extends BaseBackstackManagerActivity implements Fragme
     public void openDialog(View view) {
         createVideoGallery();
     }
+
+    public void startCreateGallery(View view) {
+        createVideoGallery();
+        mRouter.startActivity(CreateGalleryActivity.class);
+    }
+
+    public void startCreateVideoActivity(View view) {
+    }
 }
