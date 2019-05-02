@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -77,6 +78,7 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
             viewHolder.ll_camera = (LinearLayout) convertView.findViewById(R.id.ll_camera);
             viewHolder.ll_image = (LinearLayout) convertView.findViewById(R.id.ll_image);
+          //  viewHolder.checkBox1 = (CheckBox) convertView.findViewById(R.id.checkBox1);
 
 
             convertView.setTag(viewHolder);
@@ -87,7 +89,7 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         viewHolder.tv_foldern.setVisibility(View.GONE);
         viewHolder.tv_foldersize.setVisibility(View.GONE);
 
-        viewHolder.ll_camera.setVisibility(View.VISIBLE);
+        viewHolder.ll_image.setVisibility(View.VISIBLE);
         viewHolder.ll_camera.setVisibility(View.GONE);
 
         Glide.with(context).load("file://" + al_menu.get(int_position).getAl_imagepath().get(position))
@@ -104,8 +106,7 @@ public class SelectPhotoAdapter extends ArrayAdapter<Model_images> {
         TextView tv_foldern, tv_foldersize;
         ImageView iv_image;
         LinearLayout ll_camera,ll_image;
-
-
+       // CheckBox checkBox1;
     }
 
 

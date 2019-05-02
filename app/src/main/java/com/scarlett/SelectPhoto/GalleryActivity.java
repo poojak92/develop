@@ -60,13 +60,13 @@ public class GalleryActivity extends BaseToolbarActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(!obj_adapter.getItem(i).getStr_folder().equals("0")) {
-                  //  if(obj_adapter.getItem(i).getAl_imagepath().size() != 1) {
+                    if(obj_adapter.getItem(i).getAl_imagepath().size() != 1) {
                         Intent intent = new Intent(getApplicationContext(), PhotofolderActivity.class);
                         intent.putExtra("value", i);
                         startActivity(intent);
-                  //  }else {
+                    }else {
 
-                  //  }
+                    }
                 }else {
                     takePhotoFromCamera();
                 }
