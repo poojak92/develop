@@ -32,11 +32,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/btn_register_top"
+        android:layout_marginTop="@dimen/text_top"
         android:background="@drawable/btn_login"
         android:enabled="true"
-        android:onClick="startActivity"
-        android:text="@string/button_creategallery"
+        android:text="@string/button_next"
         android:textColor="@android:color/white"
         android:textSize="@dimen/button_text_size"
         android:visibility="gone"
@@ -45,7 +44,6 @@
         android:layout_marginRight="@dimen/layout_right"
         android:layout_marginBottom="@dimen/layout_bottom"
         android:layout_alignParentBottom="true" />
-
 
 
 

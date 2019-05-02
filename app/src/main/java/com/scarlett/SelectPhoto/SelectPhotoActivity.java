@@ -1,7 +1,7 @@
 package com.scarlett.SelectPhoto;
 
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 
-public class PhotofolderActivity extends BaseToolbarActivity {
+public class SelectPhotoActivity extends BaseToolbarActivity {
     int int_position;
 
-    SelectPhotoAdapter adapter;
+    SelectPhoto_Adapter adapter;
 
     @BindView(R.id.gv_folder)
     GridView mGridView;
@@ -25,10 +25,11 @@ public class PhotofolderActivity extends BaseToolbarActivity {
     @BindView(R.id.btn_next)
     Button mBtnNext;
 
+    private static ArrayList<String> galleryImageUrls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_galleryfolder);
+        setContentView(R.layout.activity_selectphoto);
         super.onCreate(savedInstanceState);
 
         showLeftButton(R.drawable.ic_toolbar_back, new ILeftClickListener() {
@@ -38,16 +39,24 @@ public class PhotofolderActivity extends BaseToolbarActivity {
             }
         });
         showTitle(getResources().getString(R.string.select_photo));
-
-        mBtnNext.setVisibility(View.VISIBLE);
         int_position = getIntent().getIntExtra("value", 0);
 
-        adapter = new SelectPhotoAdapter(this,GalleryActivity.al_images,int_position);
+        galleryImageUrls = new ArrayList<String>();//Init array
+        Log.d("select",""+GalleryActivity.al_images.get(int_position).getAl_imagepath());
+
+        for (int i=0;i<GalleryActivity.al_images.get(int_position).getAl_imagepath().size();i++) {
+            galleryImageUrls.add(GalleryActivity.al_images.get(int_position).getAl_imagepath().get(i));//get Image from column index
+            System.out.println("Array path" + galleryImageUrls.get(i));
+        }
+
+        adapter = new SelectPhoto_Adapter(SelectPhotoActivity.this, galleryImageUrls, true);
+       // adapter = new SelectPhotoAdapter(this,GalleryActivity.al_images,int_position);
         mGridView.setAdapter(adapter);
     }
     public void showSelectButton() {
         ArrayList<String> selectedItems = adapter.getCheckedItems();
         if (selectedItems.size() > 0) {
+            mBtnNext.setText("Image selected: "+selectedItems.size());
             mBtnNext.setVisibility(View.VISIBLE);
         } else
             mBtnNext.setVisibility(View.GONE);

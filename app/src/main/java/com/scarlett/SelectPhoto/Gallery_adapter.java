@@ -5,13 +5,11 @@ package com.scarlett.SelectPhoto;
  */
 
 import android.content.Context;
-import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,15 +21,15 @@ import com.scarlett.R;
 import java.util.ArrayList;
 
 
-public class PhotosFolder_adapter extends ArrayAdapter<Model_images> {
+public class Gallery_adapter extends ArrayAdapter<Model_images> {
 
     Context context;
     ViewHolder viewHolder;
     ArrayList<Model_images> al_menu = new ArrayList<>();
 
 
-    public PhotosFolder_adapter(Context context, ArrayList<Model_images> al_menu) {
-        super(context, R.layout.adapter_photosfolder, al_menu);
+    public Gallery_adapter(Context context, ArrayList<Model_images> al_menu) {
+        super(context, R.layout.adapter_gallery, al_menu);
         this.al_menu = al_menu;
         this.context = context;
 
@@ -71,7 +69,7 @@ public class PhotosFolder_adapter extends ArrayAdapter<Model_images> {
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photosfolder, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_gallery, parent, false);
 
             viewHolder.ll_camera = (LinearLayout) convertView.findViewById(R.id.ll_camera);
             viewHolder.ll_image = (LinearLayout) convertView.findViewById(R.id.ll_image);
@@ -79,7 +77,6 @@ public class PhotosFolder_adapter extends ArrayAdapter<Model_images> {
             viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
             viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
-           // viewHolder.checkBox1 = (CheckBox) convertView.findViewById(R.id.checkBox1);
 
 
             convertView.setTag(viewHolder);
@@ -113,8 +110,6 @@ public class PhotosFolder_adapter extends ArrayAdapter<Model_images> {
         ImageView iv_image;
         LinearLayout ll_camera;
         LinearLayout ll_image;
-       // CheckBox checkBox1;
-
 
     }
 

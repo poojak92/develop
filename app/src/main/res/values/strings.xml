@@ -83,6 +83,7 @@
     <string name="txt_description">Description</string>
     <string name="button_creategallery">Create Gallery</string>
     <string name="select_photo">Select Photo</string>
+    <string name="button_next">Next</string>
 
 
 </resources>

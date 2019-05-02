@@ -35,7 +35,7 @@ import java.util.Calendar;
 public class GalleryActivity extends BaseToolbarActivity {
     public static ArrayList<Model_images> al_images = new ArrayList<>();
     boolean boolean_folder;
-    PhotosFolder_adapter obj_adapter;
+    Gallery_adapter obj_adapter;
     GridView gv_folder;
     private static final int REQUEST_PERMISSIONS = 100;
     private int  CAMERA = 2;
@@ -43,7 +43,7 @@ public class GalleryActivity extends BaseToolbarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_galleryfolder);
+        setContentView(R.layout.activity_gallery);
         super.onCreate(savedInstanceState);
 
         showLeftButton(R.drawable.ic_toolbar_back, new ILeftClickListener() {
@@ -61,7 +61,8 @@ public class GalleryActivity extends BaseToolbarActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if(!obj_adapter.getItem(i).getStr_folder().equals("0")) {
                     if(obj_adapter.getItem(i).getAl_imagepath().size() != 1) {
-                        Intent intent = new Intent(getApplicationContext(), PhotofolderActivity.class);
+                        Log.d("int_pos",""+i);
+                        Intent intent = new Intent(getApplicationContext(), SelectPhotoActivity.class);
                         intent.putExtra("value", i);
                         startActivity(intent);
                     }else {
@@ -165,7 +166,7 @@ public class GalleryActivity extends BaseToolbarActivity {
                 Log.e("FILE", al_images.get(i).getAl_imagepath().get(j));
             }
         }*/
-        obj_adapter = new PhotosFolder_adapter(getApplicationContext(),al_images);
+        obj_adapter = new Gallery_adapter(getApplicationContext(),al_images);
         gv_folder.setAdapter(obj_adapter);
         return al_images;
     }

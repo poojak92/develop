@@ -94,7 +94,7 @@
             android:theme="@style/AppTheme.NoActionBar.LightStatusBar"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
-            android:name=".SelectPhoto.PhotofolderActivity"
+            android:name=".SelectPhoto.SelectPhotoActivity"
             android:theme="@style/AppTheme.NoActionBar.LightStatusBar"
             android:windowSoftInputMode="stateHidden"></activity>
         <activity
