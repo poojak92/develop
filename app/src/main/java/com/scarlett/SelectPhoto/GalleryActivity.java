@@ -19,6 +19,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.scarlett.R;
+import com.scarlett.activity.CreateGalleryActivity;
 import com.scarlett.activity.base.BaseToolbarActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -26,7 +27,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by deepshikha on 20/3/17.
@@ -40,6 +43,9 @@ public class GalleryActivity extends BaseToolbarActivity {
     private static final int REQUEST_PERMISSIONS = 100;
     private int  CAMERA = 2;
     private static final String IMAGE_DIRECTORY = "/Scarlet";
+    private static final int CustomGallerySelectId = 1;//Set Intent Id
+    public static int selectpos;
+    public static final String CustomGalleryIntentKey = "ImageArray";//Set Intent Key Value
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +68,13 @@ public class GalleryActivity extends BaseToolbarActivity {
                 if(!obj_adapter.getItem(i).getStr_folder().equals("0")) {
                     if(obj_adapter.getItem(i).getAl_imagepath().size() != 1) {
                         Log.d("int_pos",""+i);
-                        Intent intent = new Intent(getApplicationContext(), SelectPhotoActivity.class);
+                        selectpos = i;
+                        startActivityForResult(new Intent(GalleryActivity.this, SelectPhotoActivity.class), CustomGallerySelectId);
+
+                      /*  Intent intent = new Intent(getApplicationContext(), SelectPhotoActivity.class);
                         intent.putExtra("value", i);
-                        startActivity(intent);
+                        startActivity(intent);*/
+                      //  finish();
                     }else {
 
                     }
@@ -73,6 +83,8 @@ public class GalleryActivity extends BaseToolbarActivity {
                 }
             }
         });
+
+
 
 
         if ((ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) &&
@@ -96,6 +108,8 @@ public class GalleryActivity extends BaseToolbarActivity {
 
 
     }
+
+
 
     private void takePhotoFromCamera() {
         Intent intent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -192,31 +206,30 @@ public class GalleryActivity extends BaseToolbarActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == this.RESULT_CANCELED) {
-            return;
+
+
+        switch (requestCode) {
+            case CustomGallerySelectId:
+                String imagesArray = data.getStringExtra(CustomGalleryIntentKey);//get Intent data
+                Log.d("imagesArray2: ",imagesArray);
+                Intent intent = new Intent();
+                intent.putExtra(CreateGalleryActivity.CustomGalleryIntentKey, imagesArray);//Convert Array into string to pass data
+                Log.d("imagesArray3: ",imagesArray);
+
+                setResult(RESULT_OK, intent);//Set result OK
+                finish();//finish activity
+                break;
+
+            case RESULT_CANCELED:
+                return;
         }
-       /* if (requestCode == GALLERY) {
-            if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), contentURI);
-                    String path = saveImage(bitmap);
-                    Toast.makeText(GalleryActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
-                    imageview.setImageBitmap(bitmap);
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(GalleryActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        } else*/
-        if (requestCode == CAMERA) {
+       if (requestCode == CAMERA) {
             Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
             // imageview.setImageBitmap(thumbnail);
             saveImage(thumbnail);
             Toast.makeText(GalleryActivity.this, "Image Saved!", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public String saveImage(Bitmap myBitmap) {
