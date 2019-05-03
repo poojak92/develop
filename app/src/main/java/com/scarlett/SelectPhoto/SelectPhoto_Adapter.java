@@ -107,12 +107,12 @@ public class SelectPhoto_Adapter extends BaseAdapter {
                 if (temparry.contains(imageUrls.get(position))) {
                     mCheckBox.setChecked(false);
                     mSparseBooleanArray.delete((Integer) mCheckBox.getTag());
-                    ((SelectPhotoActivity) context).showSelectButton();//call custom gallery activity method
+                    ((GalleryActivity) context).showSelectButton();//call custom gallery activity method
                     cl_image.setBackground(context.getResources().getDrawable(R.drawable.drawable_photofolder));
                 } else {
                     mCheckBox.setChecked(true);
                     mSparseBooleanArray.put((Integer) mCheckBox.getTag(), true);//Insert selected checkbox value inside boolean array
-                    ((SelectPhotoActivity) context).showSelectButton();//call custom gallery activity method
+                    ((GalleryActivity) context).showSelectButton();//call custom gallery activity method
                     cl_image.setBackground(context.getResources().getDrawable(R.drawable.drawable_selectphotofolder));
                 }
 
@@ -123,7 +123,7 @@ public class SelectPhoto_Adapter extends BaseAdapter {
                @Override
                public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
                    mSparseBooleanArray.put((Integer) buttonView.getTag(), isChecked);//Insert selected checkbox value inside boolean array
-                   ((SelectPhotoActivity) context).showSelectButton();//call custom gallery activity method*//*
+                   ((GalleryActivity) context).showSelectButton();//call custom gallery activity method*//*
                    if(isChecked){
                        cl_image.setBackground(context.getResources().getDrawable(R.drawable.drawable_selectphotofolder));
 

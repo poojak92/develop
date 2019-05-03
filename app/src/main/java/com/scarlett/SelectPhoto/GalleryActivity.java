@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * Created by deepshikha on 20/3/17.
  */
@@ -38,7 +41,7 @@ import java.util.List;
 public class GalleryActivity extends BaseToolbarActivity {
     public static ArrayList<Model_images> al_images = new ArrayList<>();
     boolean boolean_folder;
-    Gallery_adapter obj_adapter;
+    SelectPhoto_Adapter obj_adapter;
     GridView gv_folder;
     private static final int REQUEST_PERMISSIONS = 100;
     private int  CAMERA = 2;
@@ -46,10 +49,14 @@ public class GalleryActivity extends BaseToolbarActivity {
     private static final int CustomGallerySelectId = 1;//Set Intent Id
     public static int selectpos;
     public static final String CustomGalleryIntentKey = "ImageArray";//Set Intent Key Value
+    private static ArrayList<String> galleryImageUrls;
+
+    @BindView(R.id.btn_next)
+    Button mBtnNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_gallery);
+        setContentView(R.layout.activity_selectphoto);
         super.onCreate(savedInstanceState);
 
         showLeftButton(R.drawable.ic_toolbar_back, new ILeftClickListener() {
@@ -65,18 +72,18 @@ public class GalleryActivity extends BaseToolbarActivity {
         gv_folder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if(!obj_adapter.getItem(i).getStr_folder().equals("0")) {
+              /*  if(!obj_adapter.getItem(i).getStr_folder().equals("0")) {
                     if(obj_adapter.getItem(i).getAl_imagepath().size() != 1) {
                         Log.d("int_pos",""+i);
                         selectpos = i;
                         startActivityForResult(new Intent(GalleryActivity.this, SelectPhotoActivity.class), CustomGallerySelectId);
 
-                      /*  Intent intent = new Intent(getApplicationContext(), SelectPhotoActivity.class);
+                      *//*  Intent intent = new Intent(getApplicationContext(), SelectPhotoActivity.class);
                         intent.putExtra("value", i);
-                        startActivity(intent);*/
+                        startActivity(intent);*//*
                       //  finish();
                     }else {
-                        /*ArrayList<String> selectedItems = new ArrayList<>();
+                        *//*ArrayList<String> selectedItems = new ArrayList<>();
                         selectedItems.add(obj_adapter.getItem(i).getStr_folder());
 
                         //Send back result to CreateGalleryActivity with selected images
@@ -85,11 +92,11 @@ public class GalleryActivity extends BaseToolbarActivity {
                         Log.d("imagesArray1: ",selectedItems.toString());
 
                         setResult(RESULT_OK, intent);//Set result OK
-                        finish();//finish activity*/
+                        finish();//finish activity*//*
                     }
                 }else {
                     takePhotoFromCamera();
-                }
+                }*/
             }
         });
 
@@ -111,13 +118,34 @@ public class GalleryActivity extends BaseToolbarActivity {
             }
         }else {
             Log.e("Else","Else");
-            fn_imagespath();
+            fetchGalleryImages();
         }
 
 
 
     }
+    public void showSelectButton() {
+        ArrayList<String> selectedItems = obj_adapter.getCheckedItems();
+        if (selectedItems.size() > 0) {
+            mBtnNext.setText("Image selected: "+selectedItems.size());
+            mBtnNext.setVisibility(View.VISIBLE);
+        } else
+            mBtnNext.setVisibility(View.GONE);
 
+    }
+
+    public void selectedPhoto(View view) {
+        ArrayList<String> selectedItems = obj_adapter.getCheckedItems();
+
+        //Send back result to CreateGalleryActivity with selected images
+        Intent intent = new Intent();
+        intent.putExtra(GalleryActivity.CustomGalleryIntentKey, selectedItems.toString());//Convert Array into string to pass data
+        Log.d("imagesArray1: ",selectedItems.toString());
+
+        setResult(RESULT_OK, intent);//Set result OK
+        finish();//finish activity
+
+    }
 
 
     private void takePhotoFromCamera() {
@@ -125,7 +153,29 @@ public class GalleryActivity extends BaseToolbarActivity {
         startActivityForResult(intent, CAMERA);
     }
 
-    public ArrayList<Model_images> fn_imagespath() {
+    private void fetchGalleryImages() {
+        final String[] columns = {MediaStore.Images.Media.DATA, MediaStore.Images.Media._ID};//get all columns of type images
+        final String orderBy = MediaStore.Images.Media.DATE_TAKEN;//order data by date
+        Cursor imagecursor = managedQuery(
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, columns, null,
+                null, orderBy + " DESC");//get all data in Cursor by sorting in DESC order
+
+        galleryImageUrls = new ArrayList<String>();//Init array
+
+
+        //Loop to cursor count
+        for (int i = 0; i < imagecursor.getCount(); i++) {
+            imagecursor.moveToPosition(i);
+            int dataColumnIndex = imagecursor.getColumnIndex(MediaStore.Images.Media.DATA);//get column index
+            galleryImageUrls.add(imagecursor.getString(dataColumnIndex));//get Image from column index
+            System.out.println("Array path" + galleryImageUrls.get(i));
+        }
+
+        obj_adapter = new SelectPhoto_Adapter(GalleryActivity.this, galleryImageUrls, true);
+        gv_folder.setAdapter(obj_adapter);
+    }
+
+   /* public ArrayList<Model_images> fn_imagespath() {
 
         al_images.clear();
 
@@ -183,16 +233,16 @@ public class GalleryActivity extends BaseToolbarActivity {
         }
 
 
-     /*   for (int i = 0; i < al_images.size(); i++) {
+     *//*   for (int i = 0; i < al_images.size(); i++) {
             Log.e("FOLDER", al_images.get(i).getStr_folder());
             for (int j = 0; j < al_images.get(i).getAl_imagepath().size(); j++) {
                 Log.e("FILE", al_images.get(i).getAl_imagepath().get(j));
             }
-        }*/
+        }*//*
         obj_adapter = new Gallery_adapter(getApplicationContext(),al_images);
         gv_folder.setAdapter(obj_adapter);
         return al_images;
-    }
+    }*/
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
@@ -202,8 +252,7 @@ public class GalleryActivity extends BaseToolbarActivity {
             case REQUEST_PERMISSIONS: {
                 for (int i = 0; i < grantResults.length; i++) {
                     if (grantResults.length > 0 && grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                        fn_imagespath();
-                    } else {
+                        fetchGalleryImages();                    } else {
                         Toast.makeText(GalleryActivity.this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
                     }
                 }

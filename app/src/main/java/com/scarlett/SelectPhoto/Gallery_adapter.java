@@ -21,6 +21,8 @@ import com.scarlett.R;
 import java.util.ArrayList;
 
 
+
+
 public class Gallery_adapter extends ArrayAdapter<Model_images> {
 
     Context context;
