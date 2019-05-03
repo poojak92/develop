@@ -2,16 +2,11 @@ package com.scarlett.SelectPhoto;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,12 +21,14 @@ import java.util.ArrayList;
  */
 public class ShowSelectedPhoto_Adapter  extends RecyclerView.Adapter<ShowSelectedPhoto_Adapter.ShowViewHolder> {
     private Context context;
-    private ArrayList<String> imageUrls;
+    private ArrayList<String> imageUrls,temp_imagesArray1;
 
-    public ShowSelectedPhoto_Adapter(Context context, ArrayList<String> imageUrls) {
+    public ShowSelectedPhoto_Adapter(Context context, ArrayList<String> temp_imagesArray1, ArrayList<String> imageUrls) {
         this.context = context;
+        this.temp_imagesArray1=temp_imagesArray1;
         this.imageUrls = imageUrls;
-
+        Log.d("Pos:imagetotal size ",""+imageUrls.size());
+        Log.d("Pos:temp_imagessize ",""+temp_imagesArray1.size());
     }
 
     @NonNull
@@ -45,41 +42,38 @@ public class ShowSelectedPhoto_Adapter  extends RecyclerView.Adapter<ShowSelecte
     @Override
     public void onBindViewHolder(@NonNull ShowViewHolder showViewHolder, int i) {
         Log.d("Pos: ",""+i);
-        Log.d("Pos:imagetotal size ",""+imageUrls.size());
-        if(i==0 && i==1) {
-            Log.d("Pos:imageUrls size3 ",""+imageUrls.size());
-            Glide.with(context).load("file://" + imageUrls.get(i))
+
+
+        if(i==0 || i==1) {
+            Glide.with(context).load("file://" + temp_imagesArray1.get(i))
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true)
                     .into(showViewHolder.iv_logo);
             showViewHolder.textViewTitle.setVisibility(View.GONE);
-        }else {
-            Log.d("Pos:imageUrls size1 ",""+imageUrls.size());
+        }else if(i>=2){
+            int size = imageUrls.size() - 2;
+            Log.d("Pos:imagetotal size1 ",""+size);
 
-            if(imageUrls.size()>3) {
-                Log.d("Pos:imageUrls size2 ",""+imageUrls.size());
-
-                int size = imageUrls.size() - 2;
-                    showViewHolder.textViewTitle.setText("" + size);
-                    Glide.with(context).load("file://" + imageUrls.get(i))
-                            .diskCacheStrategy(DiskCacheStrategy.NONE)
-                            .skipMemoryCache(true)
-                            .into(showViewHolder.iv_logo);
-                    showViewHolder.textViewTitle.setVisibility(View.VISIBLE);
-
-            }else {
-                Glide.with(context).load("file://" + imageUrls.get(i))
+            int temp_size=temp_imagesArray1.size()-1;
+            Log.d("Pos:temp_size1 ",""+size);
+            if(temp_size==i) {
+                showViewHolder.textViewTitle.setText("" + size+"+");
+                Glide.with(context).load("file://" + temp_imagesArray1.get(temp_size))
                         .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .skipMemoryCache(true)
                         .into(showViewHolder.iv_logo);
-                showViewHolder.textViewTitle.setVisibility(View.GONE);
+
+
+                showViewHolder.textViewTitle.setVisibility(View.VISIBLE);
             }
         }
+
+
     }
 
     @Override
     public int getItemCount() {
-        return imageUrls.size();
+        return temp_imagesArray1.size();
     }
 
 

@@ -69,7 +69,24 @@ public class CreateGalleryActivity extends BaseToolbarActivity {
     //Load GridView
     private void loadGridView(ArrayList<String> imagesArray) {
         mRvFolder.setVisibility(View.VISIBLE);
-        showSelectedPhoto_Adapter = new ShowSelectedPhoto_Adapter(CreateGalleryActivity.this, imagesArray);
+        ArrayList<String> temp_imagesArray1 =new ArrayList<>();
+
+        if(imagesArray.size()<=2){
+            for(int i=0;i<imagesArray.size();i++) {
+                temp_imagesArray1.add(imagesArray.get(i));
+            }
+        }
+
+        if(imagesArray.size()>2){
+            for (int i=0;i<3;i++){
+                temp_imagesArray1.add(imagesArray.get(i));
+            }
+        }
+
+
+        showSelectedPhoto_Adapter = new ShowSelectedPhoto_Adapter(CreateGalleryActivity.this, temp_imagesArray1,imagesArray);
+
+       // showSelectedPhoto_Adapter = new ShowSelectedPhoto_Adapter(CreateGalleryActivity.this, imagesArray);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(CreateGalleryActivity.this,3);
         mRvFolder.addItemDecoration(new EqualSpacingItemDecoration(20));
         mRvFolder.addItemDecoration(new EqualSpacingItemDecoration(16,EqualSpacingItemDecoration.HORIZONTAL));

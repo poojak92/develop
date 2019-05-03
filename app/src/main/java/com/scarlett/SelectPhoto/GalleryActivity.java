@@ -76,7 +76,16 @@ public class GalleryActivity extends BaseToolbarActivity {
                         startActivity(intent);*/
                       //  finish();
                     }else {
+                        /*ArrayList<String> selectedItems = new ArrayList<>();
+                        selectedItems.add(obj_adapter.getItem(i).getStr_folder());
 
+                        //Send back result to CreateGalleryActivity with selected images
+                        Intent intent = new Intent();
+                        intent.putExtra(CreateGalleryActivity.CustomGalleryIntentKey, selectedItems.toString());//Convert Array into string to pass data
+                        Log.d("imagesArray1: ",selectedItems.toString());
+
+                        setResult(RESULT_OK, intent);//Set result OK
+                        finish();//finish activity*/
                     }
                 }else {
                     takePhotoFromCamera();
