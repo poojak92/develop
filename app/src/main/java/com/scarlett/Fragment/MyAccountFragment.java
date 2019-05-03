@@ -20,7 +20,6 @@ import com.scarlett.Callback.Fragment.FragmentPresenter;
 import com.scarlett.Callback.IUpdateProfileCommunicator;
 import com.scarlett.Callback.IPermissionCommunicator;
 import com.scarlett.Fragment.base.BaseFragment;
-import com.scarlett.Manager.PermissionManager;
 import com.scarlett.Model.ProfileItem;
 import com.scarlett.Presenter.UserProfilePresenter;
 import com.scarlett.R;
@@ -34,6 +33,7 @@ import com.scarlett.activity.WalletActivity;
 import com.scarlett.activity.WithdrawActivity;
 import com.scarlett.adapter.ProfileAdapter;
 import com.scarlett.constants.AppConstants;
+import com.scarlett.manager.PermissionManager;
 
 import java.util.ArrayList;
 

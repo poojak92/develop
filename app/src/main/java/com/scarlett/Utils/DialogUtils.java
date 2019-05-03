@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.scarlett.R;
 import com.scarlett.Ui.Callback.ICustomDialogClickHandler;
 import com.scarlett.Ui.CustomeView.CustomDialog;
+import com.scarlett.manager.exception.ExceptionManager;
+import com.scarlett.manager.exception.NullValueException;
 
 
 // Class to handle all custom dialogs and progress bars actions
@@ -23,9 +25,9 @@ public class DialogUtils {
         mContext = context;
     }
 
-   /* // For showing dialog for api response caught in onErrorResponse of volley request.
+    // For showing dialog for api response caught in onErrorResponse of volley request.
     public static void showNetworkErrorDialog(final AppCompatActivity context, final String yesButtonText, final ICustomDialogClickHandler iCustomDialogClickHandler){
-        String title = context.getString(R.string.default_dialog_header_title);
+        String title = context.getString(R.string.app_name);
         String message = context.getString(R.string.network_error_message);
         CustomDialog customDialog = new CustomDialog(context,iCustomDialogClickHandler,title,message,false);
         customDialog.show();
@@ -33,7 +35,7 @@ public class DialogUtils {
     }
 
     public static void showNetworkErrorDialog(final AppCompatActivity context){
-        String title = context.getString(R.string.default_dialog_header_title);
+        String title = context.getString(R.string.app_name);
         String message = context.getString(R.string.network_error_message);
         CustomDialog customDialog = new CustomDialog(context,null,title,message,false);
         customDialog.show();
@@ -41,7 +43,7 @@ public class DialogUtils {
     }
 
     public static void showNoInternetConnectionDialog(final AppCompatActivity context){
-        String title = context.getString(R.string.default_dialog_header_title);
+        String title = context.getString(R.string.app_name);
         String message = context.getString(R.string.network_error_message);
         CustomDialog customDialog = new CustomDialog(context, new ICustomDialogClickHandler() {
             @Override
@@ -55,7 +57,7 @@ public class DialogUtils {
             }
         }, title, message, false);
         customDialog.show();
-    }*/
+    }
 
     public static void showInvalidMessage(Context activity,String msg, String header,String buttonText,ICustomDialogClickHandler handler,boolean showNoButton){
         final CustomDialog customDialog = new CustomDialog(activity,handler,header,msg,showNoButton);
@@ -92,7 +94,7 @@ public class DialogUtils {
 
     /// ******************  TODO - WRITE PROGRESS BAR RELATED STUFFS HERE AFTER
 
-   /* public static void createProgressDialog() {
+    public static void createProgressDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
@@ -106,6 +108,7 @@ public class DialogUtils {
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
     }
+
 
     public static void showProgress(final Context context,final String message) {
         mContext = context;
@@ -124,7 +127,7 @@ public class DialogUtils {
                 e.printStackTrace();
             }
         }
-    }*/
+    }
 
     public static void hideProgress() {
         if (progressDialog != null && progressDialog.isShowing() == true) {

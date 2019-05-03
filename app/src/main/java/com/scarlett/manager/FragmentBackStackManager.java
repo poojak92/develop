@@ -1,4 +1,4 @@
-package com.scarlett.Manager;
+package com.scarlett.manager;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -1,4 +1,4 @@
-package com.scarlett.Manager;
+package com.scarlett.manager;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -51,7 +51,7 @@ public class PermissionManager {
     }
 
 
-    // Show dialog to user if user denies the permission or click on never ask again
+   // Show dialog to user if user denies the permission or click on never ask again
     public static void showPermissionRequiredMessage(final IPermissionCommunicator permissionCommunicator, final int flag, final String message, final AppCompatActivity activity, final int requestCode, final String[] permissions) {
         DialogUtils dialogUtils = new DialogUtils(activity);
         dialogUtils.showInvalidMessage(activity, message, activity.getString(R.string.permission_request_header), activity.getString(R.string.dialog_button_ok), new ICustomDialogClickHandler() {

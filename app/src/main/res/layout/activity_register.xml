@@ -128,22 +128,22 @@
 
 
                            <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_password"
+                                android:id="@+id/til_mobileno"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                android:layout_marginTop="@dimen/text_top"
-                               android:hint="@string/hint_password"
+                               android:hint="@string/hint_mobile"
                                 android:theme="@style/TextInputLayoutHintStyle"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/til_email">
 
                                 <com.scarlett.Ui.CustomeView.CustomEditText
-                                    android:id="@+id/et_password"
+                                    android:id="@+id/et_mobileno"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:inputType="textPassword"
-                                    android:maxLength="50"
+                                    android:inputType="number"
+                                    android:maxLength="10"
                                     android:textSize="@dimen/email_address"
                                     app:fontType="gotham_book" />
 
@@ -151,19 +151,19 @@
 
 
                             <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_confirmpassword"
+                                android:id="@+id/til_password"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/text_top"
-                                android:hint="@string/hint_confirmpassword"
+                                android:hint="@string/hint_password"
                                 android:theme="@style/TextInputLayoutHintStyle"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/til_password"
+                                app:layout_constraintTop_toBottomOf="@+id/til_mobileno"
                                 app:layout_constraintBottom_toTopOf="@+id/btn_register">
 
                                 <com.scarlett.Ui.CustomeView.CustomEditText
-                                    android:id="@+id/et_confirmpassword"
+                                    android:id="@+id/et_password"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:inputType="textPassword"
@@ -184,17 +184,16 @@
                                 android:layout_gravity="center"
                                 android:layout_marginTop="@dimen/btn_register_top"
                                 android:background="@drawable/btn_login"
-                                android:enabled="true"
+                                android:enabled="false"
                                 android:text="@string/button_register"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/button_text_size"
                                 android:visibility="visible"
                                 app:fontType="gotham_medium"
-                                android:onClick="startActivity"
                                 style="?android:attr/borderlessButtonStyle"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/til_confirmpassword" />
+                                app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
 
                             <android.support.constraint.ConstraintLayout

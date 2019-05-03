@@ -85,5 +85,11 @@
     <string name="select_photo">Select Photo</string>
     <string name="button_next">Next</string>
 
+    <string name="network_error_message">Unable to process your,request please try again.</string>
+    <string name="enter_first_name">Enter First Name</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="hint_mobile">Mobile No</string>
+    <string name="enter_mobileno">Enter Mobile No</string>
+    <string name="register_success">You are registerd successfully</string>
 
 </resources>

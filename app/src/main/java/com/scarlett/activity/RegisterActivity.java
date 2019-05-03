@@ -4,17 +4,45 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 
+import com.mobsandgeeks.saripaar.ValidationError;
+import com.mobsandgeeks.saripaar.Validator;
+import com.scarlett.Callback.communicators.IRegisterActivityCommunicator;
+import com.scarlett.Presenter.activitypresenter.RegisterActivityPresenter;
 import com.scarlett.R;
 import com.scarlett.Ui.CustomeView.CustomButton;
-import com.scarlett.activity.base.BaseAcitivity;
+import com.scarlett.Ui.CustomeView.CustomEditText;
+import com.scarlett.Utils.CommanUtils;
+import com.scarlett.Utils.DialogUtils;
+import com.scarlett.Validation.EmailRules;
+import com.scarlett.Validation.MinLength;
+import com.scarlett.activity.base.BaseBackstackManagerActivity;
+import com.scarlett.pogo.Register.RegisterResponse;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
-public class RegisterActivity extends BaseAcitivity {
+public class RegisterActivity extends BaseBackstackManagerActivity implements IRegisterActivityCommunicator, Validator.ValidationListener {
+
+    @BindView(R.id.et_first_name)
+    CustomEditText mEtFirstName;
+
+    @BindView(R.id.et_email_address)
+    CustomEditText mEtEmailAddress;
+
+    @BindView(R.id.et_mobileno)
+    CustomEditText mEtMobileNo;
+
+    @BindView(R.id.et_password)
+    CustomEditText mEtPassword;
+
 
     @BindView(R.id.btn_register)
     CustomButton mBtnRegister;
@@ -29,13 +57,101 @@ public class RegisterActivity extends BaseAcitivity {
     @BindView(R.id.cl_bottom_view)
     ConstraintLayout mClBottomView;
 
+    private Validator mValidator;
+
+    RegisterActivityPresenter registerActivityPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_register);
         super.onCreate(savedInstanceState);
         setTreeObserver();
 
+
+        registerActivityPresenter = new RegisterActivityPresenter(this);
+        mValidator = new Validator(this);
+        mValidator.setValidationListener(this);
+        addRules();
+        mEtFirstName.addTextChangedListener(nameChangedListener);
+        mEtEmailAddress.addTextChangedListener(emailChangedListener);
+        mEtMobileNo.addTextChangedListener(mobileChangedListener);
+        mEtPassword.addTextChangedListener(passwordChangedListener);
+
+
     }
+
+    private TextWatcher nameChangedListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            mValidator.validate();
+        }
+    };
+
+    private TextWatcher emailChangedListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            mValidator.validate();
+        }
+    };
+
+    private TextWatcher mobileChangedListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            mValidator.validate();
+        }
+    };
+
+    private TextWatcher passwordChangedListener = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            mValidator.validate();
+        }
+    };
+
+
+
 
     public void setTreeObserver() {
         mRlRegister.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -59,7 +175,50 @@ public class RegisterActivity extends BaseAcitivity {
         });
     }
 
-    public void startActivity(View view) {
-        mRouter.startActivityClearTop(HomeActivity.class);
+    @OnClick(R.id.btn_register)
+    public void startActivity() {
+        registerActivityPresenter.doRegisterUser(mEtFirstName.getText().toString(),mEtEmailAddress.getText().toString(),mEtMobileNo.getText().toString(),mEtPassword.getText().toString());
+       // mRouter.startActivityClearTop(HomeActivity.class);
+    }
+
+    public void addRules(){
+        mValidator.put(mEtFirstName,new MinLength(1,2,getString(R.string.enter_first_name)));
+        mValidator.put(mEtEmailAddress, new EmailRules(2, ""));
+        mValidator.put(mEtMobileNo,new MinLength(3,10,getString(R.string.enter_mobileno)));
+        mValidator.put(mEtPassword,new MinLength(4,5,getString(R.string.enter_password)));
+
+    }
+
+    @Override
+    public void onValidationSucceeded() {
+        if(mEtPassword.getStringText().length() >= 5) {
+            mBtnRegister.setEnabled(true);
+        }
+    }
+
+    @Override
+    public void onValidationFailed(List<ValidationError> errors) {
+        mBtnRegister.setEnabled(false);
+    }
+
+    @Override
+    public void onRegisterSuccess(RegisterResponse registerResponse) {
+        if(registerResponse.getSuccess()){
+            CommanUtils.showToast(getResources().getString(R.string.register_success));
+        }else {
+            CommanUtils.showToast(""+registerResponse.getError());
+        }
+    }
+
+    @Override
+    public void onRegisterError() {
+        DialogUtils.showNetworkErrorDialog(this);
+
+    }
+
+
+    @Override
+    public BaseBackstackManagerActivity getParentActivity() {
+        return RegisterActivity.this;
     }
 }

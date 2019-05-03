@@ -5,6 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorMenu">#dadada</color>
     <color name="colorBackground">#f1f1f1</color>
+    <color name="colorPrimarydisable">#ef715f</color>
+
 
     <color name="devider_view_color">#A5B0B6</color>
     <color name="hint_color">#A5B0B6</color>

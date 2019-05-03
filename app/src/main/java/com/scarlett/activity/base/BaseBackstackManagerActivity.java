@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.scarlett.Manager.FragmentBackStackManager;
+
 import com.scarlett.R;
+import com.scarlett.manager.FragmentBackStackManager;
 
 
 public abstract class BaseBackstackManagerActivity extends BaseToolbarActivity {
