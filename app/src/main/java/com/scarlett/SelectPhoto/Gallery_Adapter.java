@@ -24,13 +24,13 @@ import java.util.ArrayList;
 /**
  * Created by SONU on 31/10/15.
  */
-public class SelectPhoto_Adapter extends BaseAdapter {
+public class Gallery_Adapter extends BaseAdapter {
     private Context context;
     private ArrayList<String> imageUrls;
     private SparseBooleanArray mSparseBooleanArray;//Variable to store selected Images
     private boolean isCustomGalleryActivity;//Variable to check if gridview is to setup for Custom Gallery or not
 
-    public SelectPhoto_Adapter(Context context, ArrayList<String> imageUrls, boolean isCustomGalleryActivity) {
+    public Gallery_Adapter(Context context, ArrayList<String> imageUrls, boolean isCustomGalleryActivity) {
         this.context = context;
         this.imageUrls = imageUrls;
         this.isCustomGalleryActivity = isCustomGalleryActivity;

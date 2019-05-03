@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -28,9 +27,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -41,7 +38,7 @@ import butterknife.BindView;
 public class GalleryActivity extends BaseToolbarActivity {
     public static ArrayList<Model_images> al_images = new ArrayList<>();
     boolean boolean_folder;
-    SelectPhoto_Adapter obj_adapter;
+    Gallery_Adapter obj_adapter;
     GridView gv_folder;
     private static final int REQUEST_PERMISSIONS = 100;
     private int  CAMERA = 2;
@@ -171,7 +168,7 @@ public class GalleryActivity extends BaseToolbarActivity {
             System.out.println("Array path" + galleryImageUrls.get(i));
         }
 
-        obj_adapter = new SelectPhoto_Adapter(GalleryActivity.this, galleryImageUrls, true);
+        obj_adapter = new Gallery_Adapter(GalleryActivity.this, galleryImageUrls, true);
         gv_folder.setAdapter(obj_adapter);
     }
 
