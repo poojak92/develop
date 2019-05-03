@@ -29,7 +29,6 @@ public class RegisterActivityPresenter {
         ApiManager apiManager = new ApiManager(ApiRequestTag.REQUEST_TAG_REGISTER_USER, new BaseApiManager.IMiddlewareResponse() {
             @Override
             public void onResponse(Object response) {
-
                 RegisterResponse registerResponse = null;
                 try {
                     registerResponse = new ObjectMapper().readValue(response.toString(), RegisterResponse.class);
