@@ -4,32 +4,29 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 
-import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
-import com.scarlett.Callback.communicators.IRegisterActivityCommunicator;
+import com.scarlett.Callback.communicators.IRetrofitCommunicator;
 import com.scarlett.Presenter.activitypresenter.RegisterActivityPresenter;
 import com.scarlett.R;
 import com.scarlett.Ui.CustomeView.CustomButton;
 import com.scarlett.Ui.CustomeView.CustomEditText;
 import com.scarlett.Utils.CommanUtils;
 import com.scarlett.Utils.DialogUtils;
-import com.scarlett.Validation.EmailRules;
-import com.scarlett.Validation.MinLength;
 import com.scarlett.activity.base.BaseBackstackManagerActivity;
 import com.scarlett.pogo.Register.RegisterResponse;
 
-import java.util.List;
+import java.util.Arrays;
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class RegisterActivity extends BaseBackstackManagerActivity implements IRegisterActivityCommunicator, Validator.ValidationListener {
+public class RegisterActivity extends BaseBackstackManagerActivity implements IRetrofitCommunicator {//}, Validator.ValidationListener {
 
     @BindView(R.id.et_first_name)
     CustomEditText mEtFirstName;
@@ -61,6 +58,8 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
 
     RegisterActivityPresenter registerActivityPresenter;
 
+    CommanUtils mCommanUtils;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_register);
@@ -68,19 +67,21 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
         setTreeObserver();
 
 
+        mBtnRegister.setEnabled(true);
         registerActivityPresenter = new RegisterActivityPresenter(this);
-        mValidator = new Validator(this);
-        mValidator.setValidationListener(this);
-        addRules();
+        mCommanUtils = new CommanUtils(this);
+      //  mValidator = new Validator(this);
+      //  mValidator.setValidationListener(this);
+       /* addRules();
         mEtFirstName.addTextChangedListener(nameChangedListener);
         mEtEmailAddress.addTextChangedListener(emailChangedListener);
         mEtMobileNo.addTextChangedListener(mobileChangedListener);
-        mEtPassword.addTextChangedListener(passwordChangedListener);
+        mEtPassword.addTextChangedListener(passwordChangedListener);*/
 
 
     }
 
-    private TextWatcher nameChangedListener = new TextWatcher() {
+   /* private TextWatcher nameChangedListener = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -149,7 +150,7 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
             mValidator.validate();
         }
     };
-
+*/
 
 
 
@@ -177,11 +178,36 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
 
     @OnClick(R.id.btn_register)
     public void startActivity() {
-        registerActivityPresenter.doRegisterUser(mEtFirstName.getText().toString(),mEtEmailAddress.getText().toString(),mEtMobileNo.getText().toString(),mEtPassword.getText().toString());
+        mEtFirstName.setText("ll");
+        mEtEmailAddress.setText("l@llll.com");
+        mEtMobileNo.setText("9988778630");
+        mEtPassword.setText("12345678");
+        HashMap hashMap = new HashMap();
+        hashMap.put("name",mEtFirstName.getText().toString());
+        hashMap.put("email",mEtEmailAddress.getText().toString());
+        hashMap.put("mobile",mEtMobileNo.getText().toString());
+        hashMap.put("password",mEtPassword.getText().toString());
+        hashMap.put("action","rg");
+        Log.d("map: ", Arrays.asList(hashMap).toString());
+
+
+        if(hashMap.size()>0) {
+            if (CommanUtils.isNetworkAvailable()) {
+                DialogUtils.showProgress(RegisterActivity.this, "");
+                registerActivityPresenter.doRegisterUser(hashMap);
+            } else {
+                DialogUtils.hideProgress();
+                DialogUtils.showNoInternetConnectionDialog(RegisterActivity.this);
+            }
+        }else {
+            CommanUtils.showToast(RegisterActivity.this,"Please fill all details");
+
+        }
+
        // mRouter.startActivityClearTop(HomeActivity.class);
     }
 
-    public void addRules(){
+   /* public void addRules(){
         mValidator.put(mEtFirstName,new MinLength(1,2,getString(R.string.enter_first_name)));
         mValidator.put(mEtEmailAddress, new EmailRules(2, ""));
         mValidator.put(mEtMobileNo,new MinLength(3,10,getString(R.string.enter_mobileno)));
@@ -191,28 +217,27 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
 
     @Override
     public void onValidationSucceeded() {
-        if(mEtPassword.getStringText().length() >= 5) {
+       // if(mValidator.isValidating()) {
             mBtnRegister.setEnabled(true);
-        }
+      //  }
     }
 
     @Override
     public void onValidationFailed(List<ValidationError> errors) {
         mBtnRegister.setEnabled(false);
+    }*/
+
+    @Override
+    public void onSuccess() {
+        CommanUtils.showToast(RegisterActivity.this,getResources().getString(R.string.register_success));
+        mRouter.startActivity(LoginActivity.class);
     }
 
     @Override
-    public void onRegisterSuccess(RegisterResponse registerResponse) {
-        if(registerResponse.getSuccess()){
-            CommanUtils.showToast(getResources().getString(R.string.register_success));
-        }else {
-            CommanUtils.showToast(""+registerResponse.getError());
-        }
-    }
+    public void onError(String error) {
+       // DialogUtils.showNetworkErrorDialog(this);
+        CommanUtils.showToast(RegisterActivity.this,error);
 
-    @Override
-    public void onRegisterError() {
-        DialogUtils.showNetworkErrorDialog(this);
 
     }
 
@@ -221,4 +246,6 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
     public BaseBackstackManagerActivity getParentActivity() {
         return RegisterActivity.this;
     }
+
+
 }

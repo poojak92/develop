@@ -88,7 +88,7 @@ public class CommanUtils {
         return mCurrentActivityWindow.getResources().getDimensionPixelSize(dimensId);
     }
 
-    public static void showToast(String message){
+    public static void showToast(Context mContext,String message){
         Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
 }

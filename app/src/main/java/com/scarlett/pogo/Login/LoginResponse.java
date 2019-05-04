@@ -1,53 +1,55 @@
 
 package com.scarlett.pogo.Login;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "success",
-    "step",
-    "result"
-})
 public class LoginResponse {
 
-    @JsonProperty("success")
+    @SerializedName("success")
+    @Expose
     private Boolean success;
-    @JsonProperty("step")
+    @SerializedName("step")
+    @Expose
     private Integer step;
-    @JsonProperty("result")
+
+    @SerializedName("error")
+    @Expose
+    private String error;
+
+    @SerializedName("result")
+    @Expose
     private LoginResult result;
 
-    @JsonProperty("success")
     public Boolean getSuccess() {
         return success;
     }
 
-    @JsonProperty("success")
     public void setSuccess(Boolean success) {
         this.success = success;
     }
 
-    @JsonProperty("step")
     public Integer getStep() {
         return step;
     }
 
-    @JsonProperty("step")
     public void setStep(Integer step) {
         this.step = step;
     }
 
-    @JsonProperty("result")
     public LoginResult getResult() {
         return result;
     }
 
-    @JsonProperty("result")
     public void setResult(LoginResult result) {
         this.result = result;
     }
 
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
 }

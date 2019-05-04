@@ -7,24 +7,46 @@ import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.scarlett.Callback.communicators.IRetrofitCommunicator;
+import com.scarlett.Presenter.activitypresenter.LoginActivityPresenter;
 import com.scarlett.R;
+import com.scarlett.Ui.CustomeView.CustomEditText;
+import com.scarlett.Utils.CommanUtils;
+import com.scarlett.Utils.DialogUtils;
 import com.scarlett.activity.base.BaseAcitivity;
+import com.scarlett.activity.base.BaseBackstackManagerActivity;
 import com.scarlett.helper.FontHelper;
 
-import butterknife.BindView;
+import java.util.Arrays;
+import java.util.HashMap;
 
-public class LoginActivity extends BaseAcitivity {
+import butterknife.BindView;
+import butterknife.OnClick;
+
+public class LoginActivity extends BaseBackstackManagerActivity implements IRetrofitCommunicator {
 
     @BindView(R.id.tv_sign_up)
     TextView mTvSignup;
+
+    @BindView(R.id.et_email_address)
+    CustomEditText mEtEmailAddress;
+
+
+    @BindView(R.id.et_password)
+    CustomEditText mEtPassword;
+
+    LoginActivityPresenter loginActivityPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_login);
         super.onCreate(savedInstanceState);
 
+        loginActivityPresenter =new LoginActivityPresenter(this);
 
       //  SpannableString spannableStr = new SpannableString(getResources().getString(R.string.login_sign_up));
       //  ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary));
@@ -34,9 +56,29 @@ public class LoginActivity extends BaseAcitivity {
         setLoginSpan();
     }
 
-    public void startActivity(View view) {
+    @OnClick(R.id.btn_login)
+    public void startActivity() {
 
-        mRouter.startActivityClearTop(RegisterActivity.class);
+        mEtEmailAddress.setText("l@llll.com");
+        mEtPassword.setText("12345678");
+        HashMap hashMap = new HashMap();
+        hashMap.put("email",mEtEmailAddress.getText().toString());
+        hashMap.put("password",mEtPassword.getText().toString());
+        hashMap.put("action","lg");
+        Log.d("map: ", Arrays.asList(hashMap).toString());
+
+
+        if(hashMap.size()>0) {
+            if (CommanUtils.isNetworkAvailable()) {
+                DialogUtils.showProgress(LoginActivity.this, "");
+                loginActivityPresenter.doLoginUser(hashMap);
+            } else {
+                DialogUtils.hideProgress();
+                DialogUtils.showNoInternetConnectionDialog(LoginActivity.this);
+            }
+        }else {
+            CommanUtils.showToast(LoginActivity.this,"Please fill all details");
+        }
     }
 
     public void setLoginSpan(){
@@ -63,5 +105,21 @@ public class LoginActivity extends BaseAcitivity {
         mTvSignup.setText(spannableString);
         mTvSignup.setMovementMethod(LinkMovementMethod.getInstance());
 
+    }
+
+    @Override
+    public void onSuccess() {
+        mRouter.startActivity(HomeActivity.class);
+    }
+
+    @Override
+    public void onError(String error) {
+        CommanUtils.showToast(LoginActivity.this,error);
+
+    }
+
+    @Override
+    public BaseBackstackManagerActivity getParentActivity() {
+        return LoginActivity.this;
     }
 }

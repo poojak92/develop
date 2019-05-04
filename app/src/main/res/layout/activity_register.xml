@@ -128,7 +128,7 @@
 
 
                            <com.scarlett.Ui.CustomeView.CustomTextInputLayout
-                                android:id="@+id/til_mobileno"
+                                android:id="@+id/till_mobileno"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                android:layout_marginTop="@dimen/text_top"
@@ -159,7 +159,7 @@
                                 android:theme="@style/TextInputLayoutHintStyle"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/til_mobileno"
+                                app:layout_constraintTop_toBottomOf="@+id/till_mobileno"
                                 app:layout_constraintBottom_toTopOf="@+id/btn_register">
 
                                 <com.scarlett.Ui.CustomeView.CustomEditText
