@@ -19,13 +19,18 @@ import com.scarlett.Utils.CommanUtils;
 import com.scarlett.Utils.DialogUtils;
 import com.scarlett.activity.base.BaseAcitivity;
 import com.scarlett.activity.base.BaseBackstackManagerActivity;
+import com.scarlett.constants.AppConstants;
 import com.scarlett.helper.FontHelper;
+import com.scarlett.manager.SharedPreferencesManager;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 public class LoginActivity extends BaseBackstackManagerActivity implements IRetrofitCommunicator {
 
@@ -44,6 +49,8 @@ public class LoginActivity extends BaseBackstackManagerActivity implements IRetr
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_login);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
         super.onCreate(savedInstanceState);
 
         loginActivityPresenter =new LoginActivityPresenter(this);
@@ -59,7 +66,7 @@ public class LoginActivity extends BaseBackstackManagerActivity implements IRetr
     @OnClick(R.id.btn_login)
     public void startActivity() {
 
-        mEtEmailAddress.setText("l@llll.com");
+        mEtEmailAddress.setText("l@p.com");
         mEtPassword.setText("12345678");
         HashMap hashMap = new HashMap();
         hashMap.put("email",mEtEmailAddress.getText().toString());
@@ -109,7 +116,13 @@ public class LoginActivity extends BaseBackstackManagerActivity implements IRetr
 
     @Override
     public void onSuccess() {
-        mRouter.startActivity(HomeActivity.class);
+
+        SharedPreferencesManager.storeBoolean(AppConstants.Login.USERLOGIN,true);
+        mRouter.startActivityClearTop(HomeActivity.class,true,true);
+        mEtEmailAddress.setText("");
+        mEtPassword.setText("");
+        DialogUtils.hideProgress();
+
     }
 
     @Override

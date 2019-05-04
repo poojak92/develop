@@ -1,12 +1,16 @@
 <resources>
-    <string name="app_name">Scarlett</string>
+    <string name="app_name">Entertainly</string>
+
+    <string name="facebook_app_id">683196745470855</string>
+    <string name="fb_login_protocol_scheme">fb683196745470855</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="splash_msg">Welcome to Scarlett</string>
+    <string name="splash_msg">Welcome to Entertainly</string>
     <string name="title_activity_splash">SplashActivity</string>
 
     // Edit text hints

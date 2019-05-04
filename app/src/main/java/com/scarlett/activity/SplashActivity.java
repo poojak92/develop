@@ -7,6 +7,8 @@ import android.os.Handler;
 import com.scarlett.Utils.BottomBarSingleton;
 import com.scarlett.activity.base.BaseAcitivity;
 import com.scarlett.R;
+import com.scarlett.constants.AppConstants;
+import com.scarlett.manager.SharedPreferencesManager;
 
 public class SplashActivity extends BaseAcitivity {
 
@@ -37,9 +39,17 @@ public class SplashActivity extends BaseAcitivity {
     public Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-            startActivity(intent);
-            finish();
+            boolean userlogin = SharedPreferencesManager.getBoolean(AppConstants.Login.USERLOGIN,false);
+            if(userlogin) {
+                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+
+            }else {
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
 
             }
 

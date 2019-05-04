@@ -42,6 +42,7 @@ public class LoginActivityPresenter {
 
                     if (response.body().getSuccess()) {
                         iRetrofitCommunicator.onSuccess();
+
                     }else {
                         DialogUtils.hideProgress();
                         iRetrofitCommunicator.onError(response.body().getError());

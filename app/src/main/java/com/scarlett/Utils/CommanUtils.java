@@ -11,7 +11,11 @@ import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.widget.Toast;
 
+import com.scarlett.activity.LoginActivity;
+import com.scarlett.constants.AppConstants;
 import com.scarlett.core.ScarletApplication;
+import com.scarlett.helper.Router;
+import com.scarlett.manager.SharedPreferencesManager;
 
 
 public class CommanUtils {
@@ -41,22 +45,10 @@ public class CommanUtils {
 
 
 
-   /* public void doLogoutLocally() {
-        Freshchat.resetUser(LuminaApplication.getContext());
-        SharedPreferencesManager.delete(AppConstants.FreshChat.FRESH_CHAT_RESTORE_ID);
-
-        ProfileRepository profileRepository = new ProfileRepository(mCurrentActivityWindow);
-        profileRepository.deleteProfile();
-
-        SettingRepository settingRepository = new SettingRepository();
-        settingRepository.deleteSettings(LuminaDatabase.getInstance(mCurrentActivityWindow));
-
-        AppAuthRepository appAuthRepository = new AppAuthRepository(mCurrentActivityWindow);
-        appAuthRepository.deleteAppAuthData();
-
-        new Router(mCurrentActivityWindow).startService(DeRegisterDeviceService.class);
-
-     }*/
+    public void doLogoutLocally() {
+        SharedPreferencesManager.delete(AppConstants.Login.USERLOGIN);
+        new Router(mCurrentActivityWindow).startActivityClearTop(LoginActivity.class,true,true);
+    }
 
 
 

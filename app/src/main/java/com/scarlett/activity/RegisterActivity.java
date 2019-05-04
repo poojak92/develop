@@ -178,10 +178,10 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
 
     @OnClick(R.id.btn_register)
     public void startActivity() {
-        mEtFirstName.setText("ll");
-        mEtEmailAddress.setText("l@llll.com");
-        mEtMobileNo.setText("9988778630");
-        mEtPassword.setText("12345678");
+       /* mEtFirstName.setText("ll");
+        mEtEmailAddress.setText("l@p.com");
+        mEtMobileNo.setText("9988778635");
+        mEtPassword.setText("12345678");*/
         HashMap hashMap = new HashMap();
         hashMap.put("name",mEtFirstName.getText().toString());
         hashMap.put("email",mEtEmailAddress.getText().toString());
@@ -229,6 +229,7 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
 
     @Override
     public void onSuccess() {
+        DialogUtils.hideProgress();
         CommanUtils.showToast(RegisterActivity.this,getResources().getString(R.string.register_success));
         mRouter.startActivity(LoginActivity.class);
     }

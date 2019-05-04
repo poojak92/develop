@@ -70,7 +70,7 @@
                                 android:id="@+id/iv_logo"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/ic_splash"
+                                android:src="@drawable/ic_fill_launcher"
                                 android:layout_marginTop="@dimen/layout_top"
                                 app:layout_constraintLeft_toLeftOf="parent"
                                 app:layout_constraintRight_toRightOf="parent"
@@ -96,11 +96,11 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content">
 
-                                    <!--  <com.facebook.login.widget.LoginButton
+                                      <com.facebook.login.widget.LoginButton
                                           android:id="@+id/login_button"
                                           android:layout_width="wrap_content"
                                           android:layout_height="wrap_content"
-                                          android:visibility="gone" />-->
+                                          android:visibility="gone" />
 
                                     <com.scarlett.Ui.CustomeView.CustomButton
                                         android:id="@+id/fb"
@@ -190,7 +190,6 @@
                                 android:layout_marginTop="@dimen/btn_register_top"
                                 android:background="@drawable/btn_login"
                                 android:enabled="true"
-                                android:onClick="startActivity"
                                 android:text="@string/button_login"
                                 android:textColor="@android:color/white"
                                 android:textSize="@dimen/button_text_size"

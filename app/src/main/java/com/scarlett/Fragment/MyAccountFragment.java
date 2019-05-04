@@ -13,6 +13,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -23,6 +24,7 @@ import com.scarlett.Fragment.base.BaseFragment;
 import com.scarlett.Model.ProfileItem;
 import com.scarlett.Presenter.UserProfilePresenter;
 import com.scarlett.R;
+import com.scarlett.Utils.CommanUtils;
 import com.scarlett.Utils.EqualSpacingItemDecoration;
 import com.scarlett.activity.AboutUsActivity;
 import com.scarlett.activity.FollwersActivity;
@@ -34,6 +36,7 @@ import com.scarlett.activity.WithdrawActivity;
 import com.scarlett.adapter.ProfileAdapter;
 import com.scarlett.constants.AppConstants;
 import com.scarlett.manager.PermissionManager;
+import com.scarlett.manager.SharedPreferencesManager;
 
 import java.util.ArrayList;
 
@@ -267,6 +270,7 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
     public void onItemSelected(ProfileItem profileItem, int selectedIndex) {
 
         String item_name = profileItem.getTitle();
+        Log.d("item_name: ",item_name);
         if(item_name.equals("Wallet")){
             mParentActivity.getRouter().startActivity(WalletActivity.class);
         }else  if(item_name.equals("My earn")){
@@ -284,7 +288,10 @@ public class MyAccountFragment extends BaseFragment implements IUpdateProfileCom
         }else  if(item_name.equals("About us")){
             mParentActivity.getRouter().startActivity(AboutUsActivity.class);
         }else  if(item_name.equals("Logout")){
-
+            boolean userlogin = SharedPreferencesManager.getBoolean(AppConstants.Login.USERLOGIN,false);
+            if(userlogin){
+                new CommanUtils(mParentActivity).doLogoutLocally();
+            }
         }
 
     }

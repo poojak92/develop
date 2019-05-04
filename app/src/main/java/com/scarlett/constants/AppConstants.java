@@ -34,4 +34,8 @@ public class AppConstants {
         public static final int CALL_REQUEST = 14;
         public static final int PERMISSIONS_CAMERA_AND_STORAGE=15;
     }
+
+    public static class Login{
+        public static final String USERLOGIN = "USERLOGIN";
+    }
 }
