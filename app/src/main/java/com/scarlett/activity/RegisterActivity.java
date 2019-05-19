@@ -200,7 +200,7 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
                 DialogUtils.showNoInternetConnectionDialog(RegisterActivity.this);
             }
         }else {
-            CommanUtils.showToast(RegisterActivity.this,"Please fill all details");
+           new CommanUtils(RegisterActivity.this).showToast(RegisterActivity.this,"Please fill all details");
 
         }
 
@@ -230,14 +230,14 @@ public class RegisterActivity extends BaseBackstackManagerActivity implements IR
     @Override
     public void onSuccess() {
         DialogUtils.hideProgress();
-        CommanUtils.showToast(RegisterActivity.this,getResources().getString(R.string.register_success));
+       new CommanUtils(RegisterActivity.this).showToast(RegisterActivity.this,getResources().getString(R.string.register_success));
         mRouter.startActivity(LoginActivity.class);
     }
 
     @Override
     public void onError(String error) {
        // DialogUtils.showNetworkErrorDialog(this);
-        CommanUtils.showToast(RegisterActivity.this,error);
+       new CommanUtils(RegisterActivity.this).showToast(RegisterActivity.this,error);
 
 
     }

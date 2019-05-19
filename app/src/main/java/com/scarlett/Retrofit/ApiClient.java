@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiClient {
-   public static final String BASE_URL = "https://www.carocab.in/livemanager.in/entertainly/interfaceapi/";
+   public static final String BASE_URL = "http://livemanager.in/entertainly/interfaceapi/";
 
     private static Retrofit retrofit = null;
 
